@@ -1,0 +1,34 @@
+{
+    "Sorry, that command doesn't exist": {
+        "pt-br": "Desculpe, esse comando não existe.",
+        "en": "Sorry, that command doesn't exist."
+    },
+    "I can't send a message to that channel": {
+        "pt-br": "Eu não consigo enviar mensagens para o canal no qual você executou o comando, por favor, avise aos donos do servidor.",
+        "en": "I can't send a message to the channel where you executed the command, please, tell the server staff."
+    },
+    "You don't have {{permission}} permission": {
+        "pt-br": "Você não tem a permissão {{permission}}.",
+        "en": "You don't have {{permission}} permission."
+    },
+    "You forgot to send what language it should be": {
+        "pt-br": "Você esqueceu de dizer qual linguagem deve ser.",
+        "en": "You forgot to send what language it should be."
+    },
+    "That language doesn't exist or wasn't been translated for this bot yet": {
+        "pt-br": "Essa linguagem não existe ou não foi traduzida para esse bot ainda.",
+        "en": "That language doesn't exist or wasn't been translated for this bot yet."
+    },
+    "That's already the defined language for this guild": {
+        "pt-br": "Essa já é a linguagem definida para esse servidor.",
+        "en": "That's already the defined language for this guild."
+    },
+    "Something happened and I wasn't able to set the language": {
+        "pt-br": "Algo aconteceu e eu não consegui definir a languagem.",
+        "en": "Something happened and I wasn't able to set the language."
+    },
+    "Language defined to {{language}}": {
+        "pt-br": "Linguagem definada para {{language}}.",
+        "en": "Language defined to {{language}}."
+    }
+}
