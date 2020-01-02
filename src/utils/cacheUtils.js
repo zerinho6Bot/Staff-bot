@@ -1,9 +1,19 @@
 const Cache = require("../cache/index.js")
 
+/**
+ * Retuns the files listed on cache/index.js
+ * @returns {Array<String>}
+ */
 module.exports.getFiles = () => {
   return Object.keys(Cache)
 }
 
+/**
+ * Writes in a cache file
+ * @param {string} file
+ * @param {object} content
+ * @returns {boolean} 
+ */
 module.exports.write = (file, content) => {
   const Files = exports.getFiles()
   if (!Files.includes(file)) {

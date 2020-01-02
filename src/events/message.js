@@ -1,7 +1,18 @@
+/**
+ * Splits the message content.
+ * @param {object} message 
+ * @returns {Array<String>}
+ */
 const Args = (message) => {
   return message.content.split(" ")
 }
 
+/**
+ * Gets the command name from the args array.
+ * @param {Array<String>} args 
+ * @param {object} keys 
+ * @returns {string}
+ */
 const CommandName = (args, keys) => {
   return args[0].toLowerCase().slice(keys.PREFIX.length)
 }

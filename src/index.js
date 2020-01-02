@@ -4,8 +4,7 @@ Env.config()
 
 const Bot = new Discord.Client()
 const Keys = process.env
-const Events = require("./events")
-const { Message, Ready } = Events
+const { Message, Ready } = require("./events")
 
 Bot.on("message", (message) => {
   try {
