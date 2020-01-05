@@ -1,4 +1,24 @@
 {
+    "I": {
+        "pt-br": "Eu",
+        "en": "I"
+    },
+    "You": {
+        "pt-br": "Você",
+        "en": "You"
+    },
+    "Missing argument": {
+        "pt-br": "Faltando argumento",
+        "en": "Missing argument"
+    },
+    "First argument": {
+        "pt-br": "Primeiro argumento",
+        "en": "First argument"
+    },
+    "Second argument": {
+        "pt-br": "Segundo argumento",
+        "en": "Second argument"
+    },
     "Sorry, that command doesn't exist": {
         "pt-br": "Desculpe, esse comando não existe.",
         "en": "Sorry, that command doesn't exist."
@@ -7,21 +27,53 @@
         "pt-br": "Eu não consigo enviar mensagens para o canal no qual você executou o comando, por favor, avise aos donos do servidor.",
         "en": "I can't send a message to the channel where you executed the command, please, tell the server staff."
     },
-    "You don't have {{permission}} permission": {
-        "pt-br": "Você não tem a permissão {{permission}}.",
-        "en": "You don't have {{permission}} permission."
+    "{{who}} don't have {{permission}} permission": {
+        "pt-br": "{{who}} não tem a permissão {{permission}}.",
+        "en": "{{who}} don't have {{permission}} permission."
     },
-    "You forgot to send what language it should be": {
-        "pt-br": "Você esqueceu de dizer qual linguagem deve ser.",
-        "en": "You forgot to send what language it should be."
+    "{{argument}}, you forgot to send the message link and/or the channel where it should be sent to": {
+        "pt-br": "{{argument}}, você esqueceu de enviar o link da mensagem e/ou o canal onde a mensagem vai ser movida.",
+        "en": "{{argument}}, you forgot to send the message link and/or the channel where it should be sent to."
     },
-    "That language doesn't exist or wasn't been translated for this bot yet": {
-        "pt-br": "Essa linguagem não existe ou não foi traduzida para esse bot ainda.",
-        "en": "That language doesn't exist or wasn't been translated for this bot yet."
+    "{{argument}}, something is wrong with the link you've sent, it should look like this {{link}}": {
+        "pt-br": "{{argument}}, algo está errado com o link que você enviou, ele deve parecer com esse {{link}}.",
+        "en": "{{argument}}, something is wrong with the link you've sent, it should look like this {{link}}."
     },
-    "That's already the defined language for this guild": {
-        "pt-br": "Essa já é a linguagem definida para esse servidor.",
-        "en": "That's already the defined language for this guild."
+    "{{argument}}, Not a valid channel": {
+        "pt-br": "{{argument}}, não é um canal valido.",
+        "en": "{{argument}}, Not a valid channel."
+    },
+    "{{argument}}, that channel doesn't exist on this guild": {
+        "pt-br": "{{argument}}, esse canal não existe nesse servidor.",
+        "en": "{{argument}}, that channel doesn't exist on this guild."
+    },
+    "{{argument}}, error while trying to get the channel": {
+        "pt-br": "{{argument}}, erro enquanto tentava obter o canal.",
+        "en": "{{argument}}, error while trying to get the channel."
+    },
+    "I could not get the message, this might be that I can't read the channel, message or the Discord API din't send me the message": {
+        "pt-br": "Eu não consegui obter a mensage, isso pode ser que eu não possa ler o canal, mensagem ou que a api do discord não me retornou a mensagem",
+        "en": "I could not get the message, this might be that I can't read the channel, message or the Discord API din't send me the message"
+    },
+    "{{who}} don't have {{permission}} permission on the given message channel": {
+        "pt-br": "{{who}} não tem a permissão {{permission}} no canal da mensagem dada.",
+        "en": "{{who}} don't have {{permission}} permission on the given message channel.."
+    },
+    "{{argument}}, you're trying to move a message from a nsfw channel to a not nsfw channel": {
+        "pt-br": "{{argument}}, você está tentando mover uma mensagem de um canal nsfw para um canal não nsfw.",
+        "en": "{{argument}}, you're trying to move a message from a nsfw channel to a not nsfw channel"
+    },
+    "{{argument}}, you forgot to send what language it should be": {
+        "pt-br": "{{argument}}, Você esqueceu de dizer qual linguagem deve ser.",
+        "en": "{{argument}}, you forgot to send what language it should be."
+    },
+    "{{argument}}, that language doesn't exist or wasn't been translated for this bot yet": {
+        "pt-br": "{{argument}}, essa linguagem não existe ou não foi traduzida para esse bot ainda.",
+        "en": "{{argument}}, that language doesn't exist or wasn't been translated for this bot yet."
+    },
+    "{{argument}}, that's already the defined language for this guild": {
+        "pt-br": "{{argument}}, essa já é a linguagem definida para esse servidor.",
+        "en": "{{argument}}, that's already the defined language for this guild."
     },
     "Something happened and I wasn't able to set the language": {
         "pt-br": "Algo aconteceu e eu não consegui definir a languagem.",
@@ -30,5 +82,9 @@
     "Language defined to {{language}}": {
         "pt-br": "Linguagem definada para {{language}}.",
         "en": "Language defined to {{language}}."
+    },
+    "Message sent by {{user}} from {{channel}} moved by {{moderator}}": {
+        "pt-br": "Mensagem enviada por {{user}} do canal {{channel}} movida por {{moderator}}.",
+        "en": "Message sent by {{user}} from {{channel}} moved by {{moderator}}."
     }
 }

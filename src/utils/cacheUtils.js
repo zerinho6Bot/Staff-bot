@@ -2,6 +2,7 @@ const Cache = require("../cache/index.js")
 
 /**
  * Retuns the files listed on cache/index.js
+ * @function
  * @returns {Array<String>}
  */
 module.exports.getFiles = () => {
@@ -9,10 +10,10 @@ module.exports.getFiles = () => {
 }
 
 /**
- * Writes in a cache file
- * @param {string} file
- * @param {object} content
- * @returns {boolean} 
+ * Writes in a cache file.
+ * @param {string} file -- One of the files listed on cache/index.js
+ * @param {object} content -- The content that'll be writen to the file.
+ * @returns {boolean} - If the action has sucess.
  */
 module.exports.write = (file, content) => {
   const Files = exports.getFiles()
@@ -22,7 +23,7 @@ module.exports.write = (file, content) => {
   }
 
   const Fs = require("fs")
-  Fs.writeFile(`./cache/${file}.json`, JSON.stringify(content, null, 4), (e) => {
+  Fs.writeFile(`./cache/${file}.json`, JSON.stringify(content, null, 2), (e) => {
     if (e) {
       console.log(e)
     }

@@ -1,7 +1,8 @@
 /**
  * Splits the message content.
+ * @function
  * @param {object} message 
- * @returns {Array<String>}
+ * @returns {Array<String>} - Returns a array made of the message splited, it'll be called args by many functions.
  */
 const Args = (message) => {
   return message.content.split(" ")
@@ -9,9 +10,10 @@ const Args = (message) => {
 
 /**
  * Gets the command name from the args array.
- * @param {Array<String>} args 
- * @param {object} keys 
- * @returns {string}
+ * @function
+ * @param {Array<String>} args - The message splited.
+ * @param {object} keys - The env. process.
+ * @returns {string} - The command name.
  */
 const CommandName = (args, keys) => {
   return args[0].toLowerCase().slice(keys.PREFIX.length)
@@ -54,7 +56,7 @@ exports.condition = (message, keys, bot) => {
   return true
 }
 
-exports.run = (message, keys, bot) => {
+exports.run = async (message, keys, bot) => {
   const SafeArgs = Args(message)
   const SafeCommandName = CommandName(SafeArgs, keys)
   const Command = Commands[SafeCommandName]
@@ -64,9 +66,12 @@ exports.run = (message, keys, bot) => {
   const Send = MessageUtils.ConfigSender(message.channel, I18n)
   const Arguments = { message, keys, bot, args: SafeArgs, fastEmbed: MessageUtils.FastEmbed(message), fastSend: Send, i18n: I18n }
 
-  if (Command.condition !== undefined && !Command.condition(Arguments)) {
-    return
-  }
+  if (Command.condition !== undefined) {
+    const Condition = await Command.condition(Arguments)
 
+    if (!Condition) {
+      return
+    }
+  }
   Commands[SafeCommandName].run(Arguments)
 }

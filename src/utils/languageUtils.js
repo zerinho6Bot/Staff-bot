@@ -1,8 +1,9 @@
 const I18nModule = require("i18n-nodejs")
 
 /**
- * Starts the i18n module with the given language
- * @param {string} language
+ * Starts the i18n module with the given language.
+ * @function
+ * @param {string} language - One of the strings included on acceptableLanguages
  * @returns {object}
  */
 exports.init = (language) => {
