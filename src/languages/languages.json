@@ -3,9 +3,81 @@
         "pt-br": "Eu",
         "en": "I"
     },
+    "No": {
+        "pt-br": "Não",
+        "en": "No"
+    },
     "You": {
         "pt-br": "Você",
         "en": "You"
+    },
+    "Info": {
+        "pt-br": "Informações",
+        "en": "Info"
+    },
+    "None": {
+        "pt-br": "Nenhum",
+        "en": "None"
+    },
+    "No icon": {
+        "pt-br": "Não tem icone.",
+        "en": "No icon."
+    },
+    "Commands": {
+        "pt-br": "Comandos",
+        "en": "Commands"
+    },
+    "Languages": {
+        "pt-br": "Linguagens",
+        "en": "Languages"
+    },
+    "Arguments": {
+        "pt-br": "Argumentos",
+        "en": "Arguments"
+    },
+    "Up to one": {
+        "pt-br": "No máximo um",
+        "en": "Up to one"
+    },
+    "Literal_Move": {
+        "pt-br": "Move",
+        "en": "Move"
+    },
+    "Literal_Help": {
+        "pt-br": "Help",
+        "en": "Help"
+    },
+    "Literal_Avatar": {
+        "pt-br": "Avatar",
+        "en": "Avatar"
+    },
+    "Help_TwoArguments": {
+        "pt-br": "No máximo dois",
+        "en": "Up to two"
+    },
+    "Literal_Servericon": {
+        "pt-br": "Servericon",
+        "en": "Servericon"
+    },
+    "Literal_Definelanguage": {
+        "pt-br": "Definelanguage",
+        "en": "Definelanguage"
+    },
+    "Example_Channel": {
+        "pt-br": "#geral",
+        "en": "#general"
+    },
+    "Example_Mention": {
+        "pt-br": "@Moru Zerinho6#9939",
+        "en": "@Miki#0777"
+    },
+    "Example_Language": {
+        "pt-br": "pt-br",
+        "en": "en"
+    },
+    "Arguments format": {
+        "pt-br": "Formato dos Argumentos",
+        "en": "Arguments Format"
     },
     "Missing argument": {
         "pt-br": "Faltando argumento",
@@ -18,6 +90,10 @@
     "Second argument": {
         "pt-br": "Segundo argumento",
         "en": "Second argument"
+    },
+    "Needs Permission": {
+        "pt-br": "Precisa de Permissão",
+        "en": "Needs Permission"
     },
     "Sorry, that command doesn't exist": {
         "pt-br": "Desculpe, esse comando não existe.",
@@ -64,7 +140,7 @@
         "en": "{{argument}}, you're trying to move a message from a nsfw channel to a not nsfw channel"
     },
     "{{argument}}, you forgot to send what language it should be": {
-        "pt-br": "{{argument}}, Você esqueceu de dizer qual linguagem deve ser.",
+        "pt-br": "{{argument}}, cocê esqueceu de dizer qual linguagem deve ser.",
         "en": "{{argument}}, you forgot to send what language it should be."
     },
     "{{argument}}, that language doesn't exist or wasn't been translated for this bot yet": {
@@ -86,5 +162,29 @@
     "Message sent by {{user}} from {{channel}} moved by {{moderator}}": {
         "pt-br": "Mensagem enviada por {{user}} do canal {{channel}} movida por {{moderator}}.",
         "en": "Message sent by {{user}} from {{channel}} moved by {{moderator}}."
+    },
+    "That command doesn't have a help defined for it yet": {
+        "pt-br": "Esse comando não tem um comando de ajuda definido para ele ainda",
+        "en": "That command doesn't have a help defined for it yet."
+    },
+    "Shows the avatar of the user who made the command or of the mentioned one": {
+        "pt-br": "Mostra o avatar de quem executou o comando ou do membro mencionado.",
+        "en": "Shows the avatar of the user who made the command or of the mentioned one."
+    },
+    "Shows a list of available commands or informations about the given command": {
+        "pt-br": "Mostra uma lista de comandos disponiveis ou informações sobre o comando dado como argumento.",
+        "en": "Shows a list of available commands or informations about the command given in the argument"
+    },
+    "{{howMany}}\n• Required: {{required}}": {
+        "pt-br": "{{howMany}}\n° Necessário: {{required}}",
+        "en": "{{howMany}}\n° Required: {{required}}"
+    },
+    "Changes the language of the bot to the given one or shows the list of supported languages": {
+        "pt-br": "Muda a linguagem do bot para a linguagem dada ou mostr a lista de linguagens suportadas.",
+        "en": "Changes the language of the bot to the given one or shows the list of supported languages."
+    },
+    "Shows the icon of the guild where the command is executed": {
+        "pt-br": "Mostra o ícone do servidor onde o comando foi executado.",
+        "en": "Shows the icon of the guild where the command is executed."
     }
 }

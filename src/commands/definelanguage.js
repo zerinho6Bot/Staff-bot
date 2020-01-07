@@ -1,7 +1,7 @@
 const { CacheUtils, LanguageUtils } = require("../utils/index.js")
 const { guildConfig } = require("../cache/index.js")
 
-exports.condition = ({ message, fastSend, args, i18n }) => {
+exports.condition = ({ message, fastSend, fastEmbed, args, i18n }) => {
   if (!message.guild.member(message.author.id).hasPermission("MANAGE_GUILD")) {
     fastSend(i18n.__("{{who}} don't have {{permission}} permission", { who: i18n.__("You"), permission: "MANAGE_GUILD" }), true)
     return false
@@ -9,8 +9,10 @@ exports.condition = ({ message, fastSend, args, i18n }) => {
 
   if (args.length < 2) {
     fastSend(i18n.__("{{argument}}, you forgot to send what language it should be", { argument: i18n.__("First argument") }), true)
+    fastSend(exports.languagesHelp({ fastEmbed, i18n }), true)
     return false
   }
+
   const Language = args[1].toLowerCase()
 
   if (!LanguageUtils.acceptableLanguages.includes(Language)) {
@@ -45,4 +47,20 @@ exports.run = ({ message, fastSend, args, i18n }) => {
     return
   }
   fastSend(i18n.__("Language defined to {{language}}", { language: Language }), true)
+}
+
+exports.helpEmbed = ({ fastEmbed, i18n }) => {
+  fastEmbed = exports.languagesHelp({ fastEmbed, i18n })
+  fastEmbed.setTitle(i18n.__("Literal_Definelanguage"))
+  fastEmbed.setDescription(i18n.__("Changes the language of the bot to the given one or shows the list of supported languages"))
+  fastEmbed.addField(i18n.__("Info"), "• " + i18n.__("Arguments") + ": " + i18n.__("{{howMany}}\n° Required: {{required}}", { howMany: i18n.__("Up to one"), required: i18n.__("Yes") }), true)
+  fastEmbed.addField(i18n.__("Arguments format"), `${i18n.__("First argument")}: ${i18n.__("Example_Language")}`)
+
+  return fastEmbed
+}
+
+exports.languagesHelp = ({ fastEmbed, i18n }) => {
+  fastEmbed.addField(i18n.__("Languages"), "``" + LanguageUtils.acceptableLanguages.join("``, ``") + "``")
+
+  return fastEmbed
 }

@@ -1,3 +1,5 @@
 module.exports.avatar = require("./avatar.js")
 module.exports.definelanguage = require("./definelanguage.js")
 module.exports.move = require("./move.js")
+module.exports.servericon = require("./servericon.js")
+module.exports.help = require("./help.js")

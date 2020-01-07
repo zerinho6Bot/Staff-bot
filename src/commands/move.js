@@ -118,3 +118,13 @@ exports.run = async ({ bot, message, fastEmbed, args, i18n }) => {
 	fastEmbed.author = DataFrom.author;
 	Channel.send(fastEmbed);
 }
+
+exports.helpEmbed = ({ fastEmbed, i18n }) => {
+  fastEmbed.setTitle(i18n.__("Literal_Move"))
+  fastEmbed.setDescription(i18n.__("Move_description"))// Moves a message from a channel to another
+  fastEmbed.addField(i18n.__("Info"), "• " + i18n.__("Arguments") + ": " + i18n.__("{{howMany}}\n• Required: {{required}}", { howMany: i18n.__("Help_TwoArguments"), required: i18n.__("No") }), true)
+  fastEmbed.addField(i18n.__("Arguments format"), `${i18n.__("First argument")}: \`\`https://discordapp.com/channels/298518634765221890/619683328919863307/662814539548590112\`\`\n
+  ${i18n.__("Second argument")}: ${i18n.__("Example_Channel")}`)
+
+  return fastEmbed
+}
