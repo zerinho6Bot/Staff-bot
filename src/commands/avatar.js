@@ -5,9 +5,9 @@ exports.run = ({ message, fastEmbed, fastSend }) => {
 
 exports.helpEmbed = ({ fastEmbed, i18n }) => {
   fastEmbed.setTitle(i18n.__("Literal_Avatar"))
-  fastEmbed.setDescription(i18n.__("Shows the avatar of the user who made the command or of the mentioned one"))
-  fastEmbed.addField(i18n.__("Info"), "• " + i18n.__("Arguments") + ": " + i18n.__("{{howMany}}\n• Required: {{required}}", { howMany: i18n.__("Up to one"), required: i18n.__("No") }), true)
-  fastEmbed.addField(i18n.__("Arguments format"), `${i18n.__("First argument")}: ${i18n.__("Example_Mention")}`)
+  fastEmbed.setDescription(i18n.__("Avatar_description"))
+  fastEmbed.addField(i18n.__("Help_Info"), i18n.__("Help_ArgumentsRequired", { howMany: i18n.__("Help_OneArgument"), required: i18n.__("Global_No") }), true)
+  fastEmbed.addField(i18n.__("Help_ArgumentsFormat"), `${i18n.__("Help_FirstArgument")}: ${i18n.__("Example_Mention")}`)
 
   return fastEmbed
 }

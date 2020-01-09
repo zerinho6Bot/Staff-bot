@@ -37,8 +37,13 @@ exports.condition = (message, keys, bot) => {
   const Send = MessageUtils.ConfigSender(message.channel, LanguageUtils.init(GuildDefinedLanguage === "" ? LanguageUtils.fallbackLanguage : GuildDefinedLanguage))
   if (!message.channel.permissionsFor(bot.user.id).has("SEND_MESSAGES")) {
     try {
-      Send("I can't send a message to that channel")
+      message.author.send("Message_errorImpossibleReply")
     } catch { }
+    return false
+  }
+
+  if (!message.channel.permissionsFor(bot.user.id).has("EMBED_LINKS")) {
+    Send("Message_errorMissingEmbedLinks")
     return false
   }
 
@@ -49,7 +54,7 @@ exports.condition = (message, keys, bot) => {
   }
 
   if (!Object.keys(Commands).includes(SafeCommandName)) {
-    Send("Sorry, that command doesn't exist")
+    Send("Help_errorCommandDontExist")
     return
   }
 

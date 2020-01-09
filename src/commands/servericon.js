@@ -8,8 +8,8 @@ exports.run = ({ message, fastEmbed, fastSend }) => {
 }
 
 exports.helpEmbed = ({ fastEmbed, i18n }) => {
-  fastEmbed.setTitle("Literal_Servericon")
-  fastEmbed.setDescription("Shows the icon of the guild where the command is executed")
+  fastEmbed.setTitle(i18n.__("Literal_Servericon"))
+  fastEmbed.setDescription(i18n.__("Servericon_description"))
 
   return fastEmbed
 }

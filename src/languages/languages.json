@@ -1,17 +1,21 @@
 {
-    "I": {
+    "Global_I": {
         "pt-br": "Eu",
         "en": "I"
     },
-    "No": {
+    "Global_No": {
         "pt-br": "Não",
         "en": "No"
     },
-    "You": {
+    "Global_Yes": {
+        "pt-br": "Sim",
+        "en": "Yes"
+    },
+    "Global_You": {
         "pt-br": "Você",
         "en": "You"
     },
-    "Info": {
+    "Help_Info": {
         "pt-br": "Informações",
         "en": "Info"
     },
@@ -23,19 +27,19 @@
         "pt-br": "Não tem icone.",
         "en": "No icon."
     },
-    "Commands": {
+    "Help_Commands": {
         "pt-br": "Comandos",
         "en": "Commands"
     },
-    "Languages": {
+    "Definelanguage_Languages": {
         "pt-br": "Linguagens",
         "en": "Languages"
     },
-    "Arguments": {
+    "Help_Arguments": {
         "pt-br": "Argumentos",
         "en": "Arguments"
     },
-    "Up to one": {
+    "Help_OneArgument": {
         "pt-br": "No máximo um",
         "en": "Up to one"
     },
@@ -75,116 +79,120 @@
         "pt-br": "pt-br",
         "en": "en"
     },
-    "Arguments format": {
+    "Help_ArgumentsFormat": {
         "pt-br": "Formato dos Argumentos",
         "en": "Arguments Format"
     },
-    "Missing argument": {
+    "Global_MissingArgument": {
         "pt-br": "Faltando argumento",
         "en": "Missing argument"
     },
-    "First argument": {
+    "Help_FirstArgument": {
         "pt-br": "Primeiro argumento",
         "en": "First argument"
     },
-    "Second argument": {
+    "Help_SecondArgument": {
         "pt-br": "Segundo argumento",
         "en": "Second argument"
     },
-    "Needs Permission": {
-        "pt-br": "Precisa de Permissão",
-        "en": "Needs Permission"
-    },
-    "Sorry, that command doesn't exist": {
+    "Help_errorCommandDontExist": {
         "pt-br": "Desculpe, esse comando não existe.",
         "en": "Sorry, that command doesn't exist."
     },
-    "I can't send a message to that channel": {
-        "pt-br": "Eu não consigo enviar mensagens para o canal no qual você executou o comando, por favor, avise aos donos do servidor.",
-        "en": "I can't send a message to the channel where you executed the command, please, tell the server staff."
-    },
-    "{{who}} don't have {{permission}} permission": {
+    "Move_errorMissingPermission": {
         "pt-br": "{{who}} não tem a permissão {{permission}}.",
         "en": "{{who}} don't have {{permission}} permission."
     },
-    "{{argument}}, you forgot to send the message link and/or the channel where it should be sent to": {
+    "Move_errorNoLink": {
         "pt-br": "{{argument}}, você esqueceu de enviar o link da mensagem e/ou o canal onde a mensagem vai ser movida.",
         "en": "{{argument}}, you forgot to send the message link and/or the channel where it should be sent to."
     },
-    "{{argument}}, something is wrong with the link you've sent, it should look like this {{link}}": {
+    "Move_errorWrongLink": {
         "pt-br": "{{argument}}, algo está errado com o link que você enviou, ele deve parecer com esse {{link}}.",
         "en": "{{argument}}, something is wrong with the link you've sent, it should look like this {{link}}."
     },
-    "{{argument}}, Not a valid channel": {
+    "Move_errorInvalidChannel": {
         "pt-br": "{{argument}}, não é um canal valido.",
         "en": "{{argument}}, Not a valid channel."
     },
-    "{{argument}}, that channel doesn't exist on this guild": {
+    "Move_errorChannelDontExist": {
         "pt-br": "{{argument}}, esse canal não existe nesse servidor.",
         "en": "{{argument}}, that channel doesn't exist on this guild."
     },
-    "{{argument}}, error while trying to get the channel": {
+    "Move_errorDintGetChannel": {
         "pt-br": "{{argument}}, erro enquanto tentava obter o canal.",
         "en": "{{argument}}, error while trying to get the channel."
     },
-    "I could not get the message, this might be that I can't read the channel, message or the Discord API din't send me the message": {
+    "Move_errorDintGetMessage": {
         "pt-br": "Eu não consegui obter a mensage, isso pode ser que eu não possa ler o canal, mensagem ou que a api do discord não me retornou a mensagem",
         "en": "I could not get the message, this might be that I can't read the channel, message or the Discord API din't send me the message"
     },
-    "{{who}} don't have {{permission}} permission on the given message channel": {
+    "Move_errorMissingPermissionOnChannel": {
         "pt-br": "{{who}} não tem a permissão {{permission}} no canal da mensagem dada.",
         "en": "{{who}} don't have {{permission}} permission on the given message channel.."
     },
-    "{{argument}}, you're trying to move a message from a nsfw channel to a not nsfw channel": {
+    "Move_errorMovingNsfw": {
         "pt-br": "{{argument}}, você está tentando mover uma mensagem de um canal nsfw para um canal não nsfw.",
         "en": "{{argument}}, you're trying to move a message from a nsfw channel to a not nsfw channel"
     },
-    "{{argument}}, you forgot to send what language it should be": {
+    "Definelanguage_errorForgotLanguage": {
         "pt-br": "{{argument}}, cocê esqueceu de dizer qual linguagem deve ser.",
         "en": "{{argument}}, you forgot to send what language it should be."
     },
-    "{{argument}}, that language doesn't exist or wasn't been translated for this bot yet": {
+    "Definelanguage_errorUnavailableLanguage": {
         "pt-br": "{{argument}}, essa linguagem não existe ou não foi traduzida para esse bot ainda.",
         "en": "{{argument}}, that language doesn't exist or wasn't been translated for this bot yet."
     },
-    "{{argument}}, that's already the defined language for this guild": {
+    "Definelanguage_errorLanguageAlreadyDefined": {
         "pt-br": "{{argument}}, essa já é a linguagem definida para esse servidor.",
         "en": "{{argument}}, that's already the defined language for this guild."
     },
-    "Something happened and I wasn't able to set the language": {
+    "Definelanguage_errorWhileSettingLanguage": {
         "pt-br": "Algo aconteceu e eu não consegui definir a languagem.",
         "en": "Something happened and I wasn't able to set the language."
     },
-    "Language defined to {{language}}": {
+    "Definelanguage_languageDefined": {
         "pt-br": "Linguagem definada para {{language}}.",
         "en": "Language defined to {{language}}."
     },
-    "Message sent by {{user}} from {{channel}} moved by {{moderator}}": {
+    "Move_MessageSent": {
         "pt-br": "Mensagem enviada por {{user}} do canal {{channel}} movida por {{moderator}}.",
         "en": "Message sent by {{user}} from {{channel}} moved by {{moderator}}."
     },
-    "That command doesn't have a help defined for it yet": {
+    "Help_errorNoHelpMade": {
         "pt-br": "Esse comando não tem um comando de ajuda definido para ele ainda",
         "en": "That command doesn't have a help defined for it yet."
     },
-    "Shows the avatar of the user who made the command or of the mentioned one": {
+    "Avatar_description": {
         "pt-br": "Mostra o avatar de quem executou o comando ou do membro mencionado.",
         "en": "Shows the avatar of the user who made the command or of the mentioned one."
     },
-    "Shows a list of available commands or informations about the given command": {
+    "Help_description": {
         "pt-br": "Mostra uma lista de comandos disponiveis ou informações sobre o comando dado como argumento.",
         "en": "Shows a list of available commands or informations about the command given in the argument"
     },
-    "{{howMany}}\n• Required: {{required}}": {
-        "pt-br": "{{howMany}}\n° Necessário: {{required}}",
-        "en": "{{howMany}}\n° Required: {{required}}"
+    "Help_ArgumentsRequired": {
+        "pt-br": "° Argumentos: {{howMany}}\n° Necessário: {{required}}",
+        "en": "° Arguments: {{howMany}}\n° Required: {{required}}"
     },
-    "Changes the language of the bot to the given one or shows the list of supported languages": {
+    "Definelanguage_description": {
         "pt-br": "Muda a linguagem do bot para a linguagem dada ou mostr a lista de linguagens suportadas.",
         "en": "Changes the language of the bot to the given one or shows the list of supported languages."
     },
-    "Shows the icon of the guild where the command is executed": {
+    "Servericon_description": {
         "pt-br": "Mostra o ícone do servidor onde o comando foi executado.",
         "en": "Shows the icon of the guild where the command is executed."
+    },
+    "Move_description": {
+        "pt-br": "Move uma mensagem de uma canal para outro.",
+        "en": "Moves a message from a message to another."
+    },
+    "Message_errorImpossibleReply": {
+        "pt-br": "Eu não consigo enviar uma mensagem para esse canal, por favor, avise a um staff.",
+        "en": "I can't send a message to that channel, please warn a staff."
+    },
+    "Message_errorMissingEmbedLinks": {
+        "pt-br": "Como a maior parte dos meus comandos usam embed, eu preciso muito da permissão de EMBED_LINKS pelo menos nesse canal, por favor avise um staff sobre isso.",
+        "en": "Since most of my commands uses embed, I really need the EMBED_LINKS permission, please warn a staff about it."
     }
 }
