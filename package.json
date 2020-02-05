@@ -12,6 +12,7 @@
   "author": "Jorge Luiz Souza Xavier",
   "license": "ISC",
   "dependencies": {
+    "caller-id": "^0.1.0",
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0",
     "i18n-nodejs": "^3.0.0"

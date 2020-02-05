@@ -1,4 +1,5 @@
 const Commands = require("../commands/index.js")
+const { MessageUtils } = require("../utils/index.js")
 
 exports.run = ({ bot, message, keys, fastSend, fastEmbed, args, i18n }) => {
   if (args.length < 2) {
@@ -20,13 +21,15 @@ exports.run = ({ bot, message, keys, fastSend, fastEmbed, args, i18n }) => {
     return
   }
 
-  fastSend(Commands[SafeCommandName].helpEmbed({ bot, message, keys, fastSend, fastEmbed, i18n }), true)
+  fastSend(Commands[SafeCommandName].helpEmbed({ bot, message, keys, fastSend, fastEmbed, helpEmbed: MessageUtils.helpEmbedFactory, i18n }), true)
 }
 
-exports.helpEmbed = ({ fastEmbed, i18n }) => {
-  fastEmbed.setTitle(i18n.__("Literal_Help"))
-  fastEmbed.setDescription(i18n.__("Help_description"))
-  fastEmbed.addField(i18n.__("Help_Info"), i18n.__("Help_ArgumentsRequired", { howMany: i18n.__("Help_OneArgument"), required: i18n.__("Global_No") }), true)
+exports.helpEmbed = ({ message, helpEmbed, i18n }) => {
+  const Options = {
+    argumentsLength: 1,
+    argumentsNeeded: false,
+    argumentsFormat: ["help"]
+  }
 
-  return fastEmbed
+  return helpEmbed(message, i18n, Options)
 }

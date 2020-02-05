@@ -12,7 +12,7 @@ module.exports.getFiles = () => {
 /**
  * Writes in a cache file.
  * @param {string} file -- One of the files listed on cache/index.js
- * @param {object} content -- The content that'll be writen to the file.
+ * @param {Object} content -- The content that'll be writen to the file.
  * @returns {boolean} - If the action has sucess.
  */
 module.exports.write = (file, content) => {

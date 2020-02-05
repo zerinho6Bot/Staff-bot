@@ -1,7 +1,7 @@
 /**
  * Splits the message content.
  * @function
- * @param {object} message 
+ * @param {Object} message 
  * @returns {Array<String>} - Returns a array made of the message splited, it'll be called args by many functions.
  */
 const Args = (message) => {
@@ -12,7 +12,7 @@ const Args = (message) => {
  * Gets the command name from the args array.
  * @function
  * @param {Array<String>} args - The message splited.
- * @param {object} keys - The env. process.
+ * @param {Object} keys - The env. process.
  * @returns {string} - The command name.
  */
 const CommandName = (args, keys) => {
@@ -24,11 +24,7 @@ const { LanguageUtils, MessageUtils } = require("../utils/index.js")
 const Commands = require("../commands/index.js")
 
 exports.condition = (message, keys, bot) => {
-  if (message.channel.type === "dm" || !message.content.toLowerCase().startsWith(keys.PREFIX)) {
-    return false
-  }
-
-  if (message.author.bot) {
+  if (message.channel.type === "dm" || !message.content.toLowerCase().startsWith(keys.PREFIX) || message.author.bot) {
     return false
   }
 
@@ -38,7 +34,7 @@ exports.condition = (message, keys, bot) => {
   if (!message.channel.permissionsFor(bot.user.id).has("SEND_MESSAGES")) {
     try {
       message.author.send("Message_errorImpossibleReply")
-    } catch { }
+    } catch {}
     return false
   }
 

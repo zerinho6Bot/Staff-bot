@@ -7,9 +7,12 @@ exports.run = ({ message, fastEmbed, fastSend }) => {
   fastSend(fastEmbed, true)
 }
 
-exports.helpEmbed = ({ fastEmbed, i18n }) => {
-  fastEmbed.setTitle(i18n.__("Literal_Servericon"))
-  fastEmbed.setDescription(i18n.__("Servericon_description"))
+exports.helpEmbed = ({ message, helpEmbed, i18n }) => {
+  const Options = {
+    argumentsLength: 0,
+    argumentsNeeded: false,
+    argumentsFormat: []
+  }
 
-  return fastEmbed
+  return helpEmbed(message, i18n, Options)
 }

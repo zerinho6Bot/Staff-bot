@@ -39,19 +39,23 @@
         "pt-br": "Argumentos",
         "en": "Arguments"
     },
+    "Help_NoArgument": {
+        "pt-br": "Nenhum argumento",
+        "en": "No argument"
+    },
     "Help_OneArgument": {
         "pt-br": "No máximo um",
         "en": "Up to one"
     },
-    "Literal_Move": {
+    "Literal_move": {
         "pt-br": "Move",
         "en": "Move"
     },
-    "Literal_Help": {
+    "Literal_help": {
         "pt-br": "Help",
         "en": "Help"
     },
-    "Literal_Avatar": {
+    "Literal_avatar": {
         "pt-br": "Avatar",
         "en": "Avatar"
     },
@@ -59,11 +63,11 @@
         "pt-br": "No máximo dois",
         "en": "Up to two"
     },
-    "Literal_Servericon": {
+    "Literal_servericon": {
         "pt-br": "Servericon",
         "en": "Servericon"
     },
-    "Literal_Definelanguage": {
+    "Literal_definelanguage": {
         "pt-br": "Definelanguage",
         "en": "Definelanguage"
     },
@@ -115,6 +119,10 @@
         "pt-br": "{{argument}}, não é um canal valido.",
         "en": "{{argument}}, Not a valid channel."
     },
+    "Move_errorInMainOperation": {
+        "pt-br": "Um error ocorreu durante umas das operações principais.(Enviar para o outro canal, apagar a mensagem no canal atual) Erro: {{error}}",
+        "en": "A error happened during on of the main operations.(Send to another channel, delete the message on the actual channel) Error: {{error}}"
+    },
     "Move_errorChannelDontExist": {
         "pt-br": "{{argument}}, esse canal não existe nesse servidor.",
         "en": "{{argument}}, that channel doesn't exist on this guild."
@@ -155,19 +163,19 @@
         "pt-br": "Linguagem definada para {{language}}.",
         "en": "Language defined to {{language}}."
     },
-    "Move_MessageSent": {
+    "move_MessageSent": {
         "pt-br": "Mensagem enviada por {{user}} do canal {{channel}} movida por {{moderator}}.",
         "en": "Message sent by {{user}} from {{channel}} moved by {{moderator}}."
     },
-    "Help_errorNoHelpMade": {
+    "help_errorNoHelpMade": {
         "pt-br": "Esse comando não tem um comando de ajuda definido para ele ainda",
         "en": "That command doesn't have a help defined for it yet."
     },
-    "Avatar_description": {
+    "avatar_description": {
         "pt-br": "Mostra o avatar de quem executou o comando ou do membro mencionado.",
         "en": "Shows the avatar of the user who made the command or of the mentioned one."
     },
-    "Help_description": {
+    "help_description": {
         "pt-br": "Mostra uma lista de comandos disponiveis ou informações sobre o comando dado como argumento.",
         "en": "Shows a list of available commands or informations about the command given in the argument"
     },
@@ -175,15 +183,15 @@
         "pt-br": "° Argumentos: {{howMany}}\n° Necessário: {{required}}",
         "en": "° Arguments: {{howMany}}\n° Required: {{required}}"
     },
-    "Definelanguage_description": {
+    "definelanguage_description": {
         "pt-br": "Muda a linguagem do bot para a linguagem dada ou mostr a lista de linguagens suportadas.",
         "en": "Changes the language of the bot to the given one or shows the list of supported languages."
     },
-    "Servericon_description": {
+    "servericon_description": {
         "pt-br": "Mostra o ícone do servidor onde o comando foi executado.",
         "en": "Shows the icon of the guild where the command is executed."
     },
-    "Move_description": {
+    "move_description": {
         "pt-br": "Move uma mensagem de uma canal para outro.",
         "en": "Moves a message from a message to another."
     },

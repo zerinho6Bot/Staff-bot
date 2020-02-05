@@ -3,11 +3,12 @@ exports.run = ({ message, fastEmbed, fastSend }) => {
   fastSend(fastEmbed, true)
 }
 
-exports.helpEmbed = ({ fastEmbed, i18n }) => {
-  fastEmbed.setTitle(i18n.__("Literal_Avatar"))
-  fastEmbed.setDescription(i18n.__("Avatar_description"))
-  fastEmbed.addField(i18n.__("Help_Info"), i18n.__("Help_ArgumentsRequired", { howMany: i18n.__("Help_OneArgument"), required: i18n.__("Global_No") }), true)
-  fastEmbed.addField(i18n.__("Help_ArgumentsFormat"), `${i18n.__("Help_FirstArgument")}: ${i18n.__("Example_Mention")}`)
+exports.helpEmbed = ({ message, helpEmbed, i18n }) => {
+  const Options = {
+    argumentsLength: 1,
+    argumentsNeeded: false,
+    argumentsFormat: [i18n.__("Example_Mention")]
+  }
 
-  return fastEmbed
+  return helpEmbed(message, i18n, Options)
 }
