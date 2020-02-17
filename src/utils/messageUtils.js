@@ -1,4 +1,6 @@
 const Discord = require("discord.js")
+const Cooldown = new Set()
+const CooldownWarning = new Set()
 
 /**
  * Returns a pre-built embed with Author, Color and Timestamp already defined.
@@ -14,6 +16,39 @@ module.exports.FastEmbed = (message) => {
   Embed.setColor(Member.displayHexColor)
   Embed.setTimestamp()
   return Embed
+}
+
+/**
+ * Adds the id to a Set that gets cleared after 3 seconds
+ * @function
+ * @param {string} id - The user Id
+ * @returns {number} - 0 If the user just entered the cooldown, 4 if the user tried to use a command while in cooldown or 3 if the user got warned that it tried to use a command while in cooldown.
+ */
+module.exports.applyCooldown = (id) => {
+  const ApplyCooldownWarning = () => {
+    CooldownWarning.add(id)
+
+    setTimeout(() => {
+      CooldownWarning.delete(id)
+    }, 3000)
+  }
+
+  if (CooldownWarning.has(id)) {
+    return 3
+  }
+
+  if (Cooldown.has(id)) {
+    ApplyCooldownWarning()
+
+    return 4
+  }
+
+  Cooldown.add(id)
+  setTimeout(() => {
+    Cooldown.delete(id)
+  }, 3000)
+
+  return 0
 }
 
 /**
@@ -91,17 +126,14 @@ module.exports.getMessage = async (bot, guildId, channelId, messageId) => {
 module.exports.helpEmbedFactory = (message, i18n, { argumentsLength, argumentsNeeded, argumentsFormat }) => {
   const Embed = exports.FastEmbed(message)
   const CallerId = require("caller-id")
-  const Caller = CallerId.getData()
-  const FileName = Caller.filePath.split("commands")[1].replace(/.js/gi, "").substring(1)
+  const FileName = CallerId.getData().filePath.split("commands")[1].replace(/.js/gi, "").substring(1)
 
-  if (argumentsLength > 0 ) {
-    const ArgumentsRequired = ["Help_NoArgument", "Help_OneArgument", "Help_TwoArguments"]
-    Embed.addField(i18n.__("Help_Info"), i18n.__("Help_ArgumentsRequired", { howMany: i18n.__(ArgumentsRequired[argumentsLength]), required: i18n.__(argumentsNeeded ? "Global_Yes" : "Global_No") }))
-  }
+  const ArgumentsRequired = ["Help_NoArgument", "Help_OneArgument", "Help_TwoArguments", "Help_ThreeArguments", "Help_FourArguments", "Help_FiveArguments", "Help_SixArguments"]
+  Embed.addField(i18n.__("Help_Info"), i18n.__("Help_ArgumentsRequired", { howMany: i18n.__(ArgumentsRequired[argumentsLength]), required: i18n.__(argumentsNeeded ? "Global_Yes" : "Global_No") }))
 
   if (argumentsFormat.length > 0) {
     let formats = ""
-    const ArgumentsIndex = ["Help_FirstArgument", "Help_SecondArgument"]
+    const ArgumentsIndex = ["Help_FirstArgument", "Help_SecondArgument", "Help_ThirdArgument", "Help_FourthArgument", "Help_FifthArgument"]
 
     for (let i = 0; i < argumentsFormat.length; i++) {
       formats += `° ${i18n.__(ArgumentsIndex[i])}: ${argumentsFormat[i]}\n`

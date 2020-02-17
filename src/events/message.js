@@ -44,6 +44,14 @@ exports.condition = (message, keys, bot) => {
   }
 
   const SafeCommandName = CommandName(Args(message), keys)
+  const UserCooldown = MessageUtils.applyCooldown(message.author.id)
+
+  if (UserCooldown > 0) {
+    if (UserCooldown === 4) {
+      Send("Message_errorMissingEmbedLinks", false, { amount: 3 })
+    }
+    return
+  }
 
   if (!SafeCommandName) {
     return false
@@ -63,7 +71,7 @@ exports.run = async (message, keys, bot) => {
   const Command = Commands[SafeCommandName]
   const GuildDefinedLanguage = guildConfig[message.guild.id] && guildConfig[message.guild.id].language ? 
   guildConfig[message.guild.id].language : ""
-  const I18n = LanguageUtils.init(GuildDefinedLanguage === "" ? LanguageUtils.fallbackLanguage : GuildDefinedLanguage)
+  const I18n = await LanguageUtils.init(GuildDefinedLanguage === "" ? LanguageUtils.fallbackLanguage : GuildDefinedLanguage)
   const Send = MessageUtils.ConfigSender(message.channel, I18n)
   const Arguments = { message, keys, bot, args: SafeArgs, fastEmbed: MessageUtils.FastEmbed(message), fastSend: Send, i18n: I18n }
 

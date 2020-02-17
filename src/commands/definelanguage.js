@@ -29,16 +29,14 @@ exports.condition = ({ message, fastSend, fastEmbed, args, i18n }) => {
   return true
 }
 
-exports.run = ({ message, fastSend, args, i18n }) => {
+exports.run = ({ message, fastSend, args }) => {
   const Language = args[1].toLowerCase()
+  const DefaultProperties = CacheUtils.getDefaultGuildProperties
 
-  if (guildConfig[message.guild.id]) {
-    guildConfig[message.guild.id].language = args[1].toLowerCase()
-  } else {
-    guildConfig[message.guild.id] = {
-      language: Language
-    }
+  if (!guildConfig[message.guild.id]) {
+    guildConfig[message.guild.id].language = DefaultProperties
   }
+  guildConfig[message.guild.id].language = Language
 
   const Result = CacheUtils.write("guildConfig", guildConfig)
 

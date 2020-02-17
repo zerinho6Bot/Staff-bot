@@ -28,7 +28,7 @@ exports.helpEmbed = ({ message, helpEmbed, i18n }) => {
   const Options = {
     argumentsLength: 1,
     argumentsNeeded: false,
-    argumentsFormat: ["help"]
+    argumentsFormat: ["help"] // Commands can't get translated
   }
 
   return helpEmbed(message, i18n, Options)
