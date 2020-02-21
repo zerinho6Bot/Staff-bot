@@ -51,7 +51,7 @@ module.exports.Profile = class {
    */
   ProfileDisabledForGuild (guildId = this.guild.id) {
     if (!this.guildConfig[guildId]) {
-      return false
+      return true
     }
 
     return !this.guildConfig[guildId].profile
@@ -382,23 +382,25 @@ module.exports.Profile = class {
  * Writes in a cache file.
  * @param {string} file - One of the files listed on cache/index.js
  * @param {Object} content - The content that'll be writen to the file.
- * @returns {boolean} - If the action has sucess.
+ * @returns {boolean} - If the action had success.
  */
 module.exports.write = (file, content) => {
   const Files = exports.getFiles()
+  const Path = require("path")
+
   if (!Files.includes(file)) {
     console.log(`${file} does not exist on cache directory, files that exist: ${Files.join(", ")}`)
     return false
   }
 
   const Fs = require("fs")
-  Fs.writeFile(`./cache/${file}.json`, JSON.stringify(content, null, 2), (e) => {
+  Fs.writeFile(Path.join(__dirname, `../cache/${file}.json`), JSON.stringify(content, null, 2), (e) => {
     if (e) {
       console.log(e)
     }
 
     try {
-      delete require.cache[require.resolve(`../cache/${file}.json`)]
+      delete require.cache[require.resolve(Path.join(__dirname, `../cache/${file}.json`))]
     } catch (e) {
       console.log(e)
     }

@@ -77,7 +77,7 @@ exports.run = ({ message, fastEmbed, fastSend, i18n }) => {
 exports.helpEmbed = ({ message, helpEmbed, i18n }) => {
   const Options = {
     argumentsLength: 1,
-    argumentsNeeded: true,
+    argumentsNeeded: false,
     argumentsFormat: [i18n.__("Example_Mention")]
   }
 

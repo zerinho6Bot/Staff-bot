@@ -1,6 +1,4 @@
-const { CacheUtils } = require("../utils/index.js")
-const Moment = require("moment")
-Moment.locale("en")
+const { CacheUtils, DateUtils } = require("../utils/index.js")
 
 exports.condition = ({ message, fastSend }) => {
   const Profile = new CacheUtils.Profile(message.guild)
@@ -27,16 +25,15 @@ exports.run = ({ message, fastSend, i18n }) => {
   }
 
   if (!Profile.UserBank(message.author.id)) {
-    Profile.GuildBank[message.author.id] = Profile.DefaultBankProperties
+    Profile.GuildBank[message.author.id] = Profile.DefaultUserBankProperties
     createdToday = true
     requiresUpdate = true
   }
 
   const UserBank = Profile.UserBank(message.author.id)
-  const TimeDifference = new Date().getTime() - new Date(UserBank.lastDaily).getTime()
-  const DaysDifference = (TimeDifference) / (1000 * 3600 * 24)
+  const DateClass = new DateUtils.date(UserBank.lastDaily)
 
-  if (DaysDifference > 1 || createdToday) {
+  if (DateClass.isOldDay || createdToday) {
     for (let i = 0; i < CoinsName.length; i++) {
       if (!UserBank.wallet[CoinsName[i]]) {
         UserBank.wallet[CoinsName[i]] = Profile.DefaultMoneyProperties
@@ -59,9 +56,11 @@ exports.run = ({ message, fastSend, i18n }) => {
   }
 
   if (collectedCoinsStr.length <= 0) {
-    const TimeSinceLastDaily = Moment(UserBank.lastDaily).fromNow()
-    const Time = TimeSinceLastDaily.includes("second") ? i18n.__("Daily_seconds") : TimeSinceLastDaily.includes("minute") ? i18n.__("Daily_minutes") : TimeSinceLastDaily.includes("hour") ? i18n.__("Daily_hours") : i18n.__("Daily_userForgorTheBotExists")
-    const Amount = (TimeSinceLastDaily.includes("few") || TimeSinceLastDaily.includes("some")) ? i18n.__("Daily_few") : TimeSinceLastDaily.replace(/[^0-9]/g, "")
+    const DateClass = new DateUtils.date(UserBank.lastDaily)
+    const TimeSinceLastDaily = DateClass.fromNow
+    const Time = TimeSinceLastDaily.includes("seconds") ? i18n.__("Daily_seconds") : TimeSinceLastDaily.includes("minutes") ? i18n.__("Daily_minutes") : TimeSinceLastDaily.includes("hours") ? i18n.__("Daily_hours") : i18n.__("Daily_userForgotTheBotExists")
+    const Amount = TimeSinceLastDaily.replace(/[^0-9]/g, "")
+
     fastSend("Daily_errorNoCoinToCollect", false, { amount: Amount, time: Time })
     return
   }

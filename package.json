@@ -4,7 +4,8 @@
   "description": "A utility bot for discord staffs.",
   "main": "src/index.js",
   "scripts": {
-    "test": "node src/index.js"
+    "test": "node src/index.js",
+    "start": "node src/index.js"
   },
   "keywords": [
     "bot"
@@ -15,8 +16,7 @@
     "caller-id": "^0.1.0",
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0",
-    "i18n-nodejs": "^3.0.0",
-    "moment": "^2.24.0"
+    "i18n-nodejs": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

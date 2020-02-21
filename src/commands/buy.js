@@ -47,7 +47,7 @@ exports.run = ({ message, fastSend, fastEmbed, args, i18n }) => {
       fastEmbed.addField(`${i18n.__("Buy_Tags")} (${Object.keys(Tags).length})`, `\`\`${Object.keys(Tags).join("``, ``")}\`\``)
     }
 
-    fastEmbed.setTitle(`_${i18n.__("Buy_welcomeMessage")}_`)
+    fastEmbed.setTitle(`_${i18n.__("Buy_welcomeMessage", { guild: message.guild.name })}_`)
     // fastEmbed.setDescription("To buy something just do ``prefix.buy [role or tag] [itemName]``\nTo see info about the item use ``prefix.buy [role or tag] [itemName] info``")
     fastSend(fastEmbed, true)
     return

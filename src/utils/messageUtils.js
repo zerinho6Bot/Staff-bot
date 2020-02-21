@@ -60,7 +60,7 @@ module.exports.applyCooldown = (id) => {
  */
 module.exports.ConfigSender = (channel, translate) => {
   /**
-   * Starts typing before sending the message, then stops styping and then returns the message.
+   * Starts typing before sending the message, then stops typing and then returns the message.
    * @async
    * @function
    * @param {string} content
