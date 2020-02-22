@@ -31,7 +31,7 @@ exports.run = ({ message, fastSend, i18n }) => {
   }
 
   const UserBank = Profile.UserBank(message.author.id)
-  const DateClass = new DateUtils.date(UserBank.lastDaily)
+  const DateClass = new DateUtils.Date(UserBank.lastDaily)
 
   if (DateClass.isOldDay || createdToday) {
     for (let i = 0; i < CoinsName.length; i++) {
@@ -56,12 +56,16 @@ exports.run = ({ message, fastSend, i18n }) => {
   }
 
   if (collectedCoinsStr.length <= 0) {
-    const DateClass = new DateUtils.date(UserBank.lastDaily)
+    const DateClass = new DateUtils.Date(UserBank.lastDaily)
     const TimeSinceLastDaily = DateClass.fromNow
-    const Time = TimeSinceLastDaily.includes("seconds") ? i18n.__("Daily_seconds") : TimeSinceLastDaily.includes("minutes") ? i18n.__("Daily_minutes") : TimeSinceLastDaily.includes("hours") ? i18n.__("Daily_hours") : i18n.__("Daily_userForgotTheBotExists")
+    // const Time = TimeSinceLastDaily.includes("seconds") ? i18n.__("Daily_seconds") : TimeSinceLastDaily.includes("minutes") ? i18n.__("Daily_minutes") : TimeSinceLastDaily.includes("hours") ? i18n.__("Daily_hours") : i18n.__("Daily_userForgotTheBotExists")
     const Amount = TimeSinceLastDaily.replace(/[^0-9]/g, "")
-
-    fastSend("Daily_errorNoCoinToCollect", false, { amount: Amount, time: Time })
+    const Time = () => {
+      const InPlural = Amount === 1 ? "" : "s"
+      const Time = TimeSinceLastDaily.replace(/([0-9])(\s+)/g, "")
+      return i18n.__(`Daily_${Time}${InPlural}`)
+    }
+    fastSend("Daily_errorNoCoinToCollect", false, { amount: Amount, time: Time() })
     return
   }
   fastSend(collectedCoinsStr, true)

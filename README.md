@@ -36,6 +36,7 @@ What things you need to install the software and how to install them
 ```
 TOKEN=The bot token here
 PREFIX=The bot prefix here
+OWNER=You discord account ID here
 ```
 
 If you're unfamiliar, prefix means what the message should start with so the bot takes and tries to do something with it.

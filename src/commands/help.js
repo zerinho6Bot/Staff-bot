@@ -1,4 +1,4 @@
-const Commands = require("../commands/index.js")
+const Commands = require("./index.js")
 const { MessageUtils } = require("../utils/index.js")
 
 exports.run = ({ bot, message, keys, fastSend, fastEmbed, args, i18n }) => {

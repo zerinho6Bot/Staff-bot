@@ -2,22 +2,22 @@
  * Date class with many functions to check day/month/year difference.
  * @param {number} date - The date timestamp in milliseconds.
  */
-exports.date = class {
-  constructor(date) {
+exports.Date = class {
+  constructor (date) {
     this.date = new Date(date)
     this.givenDate = {
-      seconds: this.date.getSeconds(),
-      minutes: this.date.getMinutes(),
-      hours: this.date.getHours(),
+      second: this.date.getSeconds(),
+      minute: this.date.getMinutes(),
+      hour: this.date.getHours(),
       day: this.date.getDay(),
       month: this.date.getMonth(),
       year: this.date.getFullYear()
     }
     this.jsDate = new Date()
     this.js = {
-      seconds: this.jsDate.getSeconds(),
-      minutes: this.jsDate.getMinutes(),
-      hours: this.jsDate.getHours(),
+      second: this.jsDate.getSeconds(),
+      minute: this.jsDate.getMinutes(),
+      hour: this.jsDate.getHours(),
       day: this.jsDate.getDay(),
       month: this.jsDate.getMonth(),
       year: this.jsDate.getFullYear()
@@ -28,7 +28,7 @@ exports.date = class {
    * Gets if the year of the given date to the class is older than the actual year.
    * @returns {boolean}
    */
-  get isOldYear() {
+  get isOldYear () {
     return this.js.year > this.givenDate.year
   }
 
@@ -36,7 +36,7 @@ exports.date = class {
    * Gets if the month of the given date to the class is older than the actual month.
    * @returns {boolean}
    */
-  get isOldMonth() {
+  get isOldMonth () {
     const DifferentYear = this.isOldYear
     const CurrentMonth = this.js.month
     const GivenMonth = this.givenDate.month
@@ -52,7 +52,7 @@ exports.date = class {
    * Gets if the day of the given date to the class is older than the actual day.
    * @returns {boolean}
    */
-  get isOldDay() {
+  get isOldDay () {
     const DifferentMonth = this.isOldMonth
     const CurrentDay = this.js.day
     const GivenDay = this.givenDate.day
@@ -68,23 +68,23 @@ exports.date = class {
    * Gets the time difference from the given date timestamp to the actual date timestamp
    * @returns {number} - The difference in milliseconds
    */
-  get timeDifference() {
+  get timeDifference () {
     return this.js.getTime() - this.date.getTime()
   }
 
   /**
    * Gets a human readable string saying how much time it is since the given date.
-   * @returns {string} - Format: "Amount Time", Amount being a number and Time being like "seconds", "minutes"..etc, example: "4 seconds"
+   * @returns {string} - Format: "Amount Time", Amount being a number and Time being like "second", "minute"..etc, example: "4 second"
    */
-  get fromNow() {
-    let time = "seconds"
+  get fromNow () {
+    let time = "second"
 
-    if ((this.js.minutes - this.givenDate.minutes) > 0) {
-      time = "minutes"
+    if ((this.js.minute - this.givenDate.minute) > 0) {
+      time = "minute"
     }
 
-    if ((this.js.hours - this.givenDate.hours) > 0) {
-      time = "hours"
+    if ((this.js.hour - this.givenDate.hour) > 0) {
+      time = "hour"
     }
 
     if (this.isOldDay) {

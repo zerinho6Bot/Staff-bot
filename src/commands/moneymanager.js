@@ -63,13 +63,13 @@ exports.condition = ({ args, message, fastSend, i18n }) => {
   return true
 }
 
-exports.run = ({ message, args, fastSend, i18n }) => {
+exports.run = ({ message, args, fastSend }) => {
   const Profile = new CacheUtils.Profile(message.guild)
   const MentionedUser = message.mentions.users.first()
 
   Profile.UserWallet(MentionedUser.id)[args[2]].holds += parseInt(args[3])
   CacheUtils.write("guildConfig", Profile.guildConfig)
-  fastSend("Moneymanager_editedCoin", false, { coin: args[2], name: MentionedUser.username, value: Profile.UserWallet(MentionedUser.id)[args[2]].holds })
+  fastSend("Moneymanager_editedCoin", false, { coin: args[2], name: MentionedUser.username, amount: Profile.UserWallet(MentionedUser.id)[args[2]].holds })
 }
 
 exports.helpEmbed = ({ message, helpEmbed, i18n }) => {

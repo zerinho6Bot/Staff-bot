@@ -195,7 +195,7 @@
         "pt-br": "Linguagem definada para {{language}}.",
         "en": "Language defined to {{language}}."
     },
-    "move_MessageSent": {
+    "Move_MessageSent": {
         "pt-br": "Mensagem enviada por {{user}} do canal {{channel}} movida por {{moderator}}.",
         "en": "Message sent by {{user}} from {{channel}} moved by {{moderator}}."
     },
@@ -424,20 +424,56 @@
         "en": "Gain your daily money on the server."
     },
     "Daily_errorNoCoinToCollect": {
-        "pt-br": "Não tem nenhuma moeda para coletar ainda, a ultima vez que você colectou foi a {{amount}} {{time}} atrás, você precisa esperar 24 horas.",
+        "pt-br": "Não tem nenhuma moeda para coletar ainda, a ultima vez que você coletou foi a {{amount}} {{time}} atrás, você precisa esperar 24 horas.",
         "en": "There's no coin for you to collect yet, your last daily was {{amount}} {{time}} ago, you need to wait 24 hours."
+    },
+    "Daily_second": {
+        "pt-br": "segundo",
+        "en": "second"
     },
     "Daily_seconds": {
         "pt-br": "segundos",
         "en": "seconds"
     },
+    "Daily_minute": {
+        "pt-br": "minuto",
+        "en": "minute"
+    },
     "Daily_minutes": {
         "pt-br": "minutos",
         "en": "minutes"
     },
+    "Daily_hour": {
+        "pt-br": "hora",
+        "en": "hour"
+    },
     "Daily_hours": {
         "pt-br": "horas",
         "en": "hours"
+    },
+    "Daily_day": {
+        "pt-br": "dia",
+        "en": "dias"
+    },
+    "Daily_days": {
+        "pt-br": "dias",
+        "en": "days"
+    },
+    "Daily_month": {
+        "pt-br": "mês",
+        "en": "month"
+    },
+    "Daily_months": {
+        "pt-br": "meses",
+        "en": "months"
+    },
+    "Daily_year": {
+        "pt-br": "ano",
+        "en": "year"
+    },
+    "Daily_years": {
+        "pt-br": "anos",
+        "en": "years"
     },
     "Daily_userForgotTheBotExists": {
         "pt-br": "Muitos dias",
@@ -609,7 +645,7 @@
     },
     "Moneymanager_editedCoin": {
         "pt-br": "Editada a moeda {{coin}} do {{name}} para {{amount}}.",
-        "en": "Edited {{name}} {{coin}} coin to {{value}}."
+        "en": "Edited {{name}} {{coin}} coin to {{amount}}."
     },
     "Literal_profile": {
         "pt-br": "Profile",
@@ -742,6 +778,22 @@
     "Myprofile_updated": {
         "pt-br": "A(O) {{operation}} foi atualizada!",
         "en": "Your {{operation}} was updated!"
+    },
+    "Eval_errorOnlyOwner": {
+        "pt-br": "Apenas o dono do bot pode usar esse comando.",
+        "en": "Only the bot owner can use that command."
+    },
+    "Eval_errorMissingCode": {
+        "pt-br": "Você esqueceu de por o código.",
+        "en": "You forgot to put the code."
+    },
+    "Eval_code": {
+        "pt-br": "Código",
+        "en": "Code"
+    },
+    "Eval_result": {
+        "pt-br": "Resultado",
+        "en": "Result"
     },
     "Message_errorImpossibleReply": {
         "pt-br": "Eu não consigo enviar uma mensagem para esse canal, por favor, avise a um staff.",

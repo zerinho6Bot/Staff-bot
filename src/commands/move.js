@@ -94,6 +94,7 @@ exports.run = async ({ bot, message, fastSend, fastEmbed, args, i18n }) => {
       }
 
       if (GivenMessage.attachments.size >= 1) {
+        Channel.send(i18n.__("Move_MessageSent", { user: GivenMessage.author.tag, channel: GivenMessage.channel, moderator: message.author.tag }))
         Channel.send(new Discord.Attachment(GivenMessage.attachments.last().url))
       }
       GivenMessage.delete()
