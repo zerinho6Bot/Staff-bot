@@ -716,8 +716,8 @@
         "en": "{{argument}}, That tag already exists."
     },
     "Sale_nowSelling": {
-        "pt-br": "Vendendo {{itemType}} chamado {{name}} com o valor {{value}} usando a moeda {{coin}}",
-        "en": "Now selling {{itemType}} called {{name}} with the value {{value}} using the "
+        "pt-br": "Vendendo {{itemType}} chamado {{name}} com o valor {{value}} usando a moeda {{coin}}.",
+        "en": "Now selling {{itemType}} called {{name}} with the value {{value}} using the coin {{coin}}."
     },
     "Literal_unsell": {
         "pt-br": "Unsell",
@@ -794,6 +794,46 @@
     "Eval_result": {
         "pt-br": "Resultado",
         "en": "Result"
+    },
+    "Literal_eval": {
+        "pt-br": "Eval",
+        "en": "Eval"
+    },
+    "eval_description": {
+        "pt-br": "Execute um comando.",
+        "en": "Run a command."
+    },
+    "eval_firstArgumentExample": {
+        "pt-br": "const Channel = message.guild.channel\n\nChannel.send(\"Olá Mundo\")",
+        "en": "const Channel = message.guild.channel\n\nChannel.send(\"Hello World\")"
+    },
+    "Literal_guilddefault": {
+        "pt-br": "Guilddefault",
+        "en": "Guilddefault"
+    },
+    "guilddefault_description": {
+        "pt-br": "Mude a descrição ou fundo do profile do servidor.",
+        "en": "Change the description or background of the guild profile."
+    },
+    "guildDefault_errorWrongBackgroundLink": {
+        "pt-br": "{{argument}}, O link de fundo não pode ser um número, e tem que ser um link de imagem valido",
+        "en": "{{argument}}, The background link can't be a number and should be a valid image link."
+    },
+    "guildDefault_errorWrongDescriptionLink": {
+        "pt-br": "{{argument}}, A descrição do servidor não pode ser apenas número e não pode ter mais de 1024 caracteres.",
+        "en": "{{argument}}, The description of the server can't be only number and it can't have more than 1024 characters."
+    },
+    "guildDefault_definedGuildDefault": {
+        "pt-br": "Foi definido a(o) {{property}} padrão!",
+        "en": "Defined guild default {{property}}!"
+    },
+    "guildDefault_firstArgumentExample": {
+        "pt-br": "(fundo ou descrição)",
+        "en": "(background or description"
+    },
+    "guildDefault_secondArgumentExample": {
+        "pt-br": "(Link_de_Imagem ou texto)",
+        "en": "(ImageLink or text)"
     },
     "Message_errorImpossibleReply": {
         "pt-br": "Eu não consigo enviar uma mensagem para esse canal, por favor, avise a um staff.",

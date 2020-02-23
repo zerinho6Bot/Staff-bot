@@ -19,6 +19,23 @@ Bot.on("message", (message) => {
 })
 
 Bot.on("ready", () => {
+  const { guildConfig } = require("./cache/index.js")
+  const { isOnGuild, write } = require("./utils/index.js").CacheUtils
+  const Guilds = Object.keys(guildConfig)
+  let needsDataUpdate = false
+  for (let i = 0; i < Guilds.length; i++) {
+    if (isOnGuild(Bot, Guilds[i])) {
+      continue
+    }
+
+    delete guildConfig[Guilds[i]]
+    needsDataUpdate = true
+  }
+
+  if (needsDataUpdate) {
+    write("guildConfig", guildConfig)
+  }
+
   Ready.run(Bot, Keys)
 })
 

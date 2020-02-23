@@ -20,7 +20,6 @@ exports.condition = ({ args, message, fastSend, i18n }) => {
   if (!profiles[message.author.id]) {
     profiles[message.author.id] = Profile.DefaultProfileProperties
   }
-
   const FixedDescription = args.splice(2, args.length - 1).join(" ")
   switch (FixedOperator) {
     case i18n.__("Myprofile_background"):

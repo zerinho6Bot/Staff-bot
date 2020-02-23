@@ -71,7 +71,27 @@ exports.run = ({ message, fastEmbed, fastSend, i18n }) => {
     fastEmbed.addField(i18n.__("Buy_Tags"), "``" + UserTags.join("``, ``") + "``")
   }
 
-  fastSend(fastEmbed, true)
+  try {
+    fastSend(fastEmbed, true)
+  } catch (e) {
+    console.log(e)
+    if (Profile.background.length <= 0 && Guild.profile.defaultConfig.background === GuildProfile.defaultBackground) {
+      return
+    }
+
+    let updateGuild = false
+    if (Profile.background.length <= 0) {
+      GuildProfile.GuildDefaults.background = GuildProfile.defaultBackground
+      updateGuild = true
+    } else {
+      Profile.background = ""
+    }
+
+    const FileToUpdate = updateGuild ? "guildConfig" : "profiles"
+    const ContentToGive = updateGuild ? GuildProfile.guildConfig : profiles
+
+    CacheUtils.write(FileToUpdate, ContentToGive)
+  }
 }
 
 exports.helpEmbed = ({ message, helpEmbed, i18n }) => {
