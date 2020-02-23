@@ -2,10 +2,11 @@ const Discord = require("discord.js")
 const Env = require("dotenv")
 Env.config()
 
+const Path = require("path")
 const Bot = new Discord.Client()
 const Keys = process.env
 const { Message, Ready } = require("./events")
-const Log = require("simple-node-logger").createSimpleLogger({ logFilePath: "./cache/log.log" })
+const Log = require("simple-node-logger").createSimpleLogger({ logFilePath: Path.join(__dirname, "./cache/log.txt") })
 
 Bot.on("message", (message) => {
   try {
