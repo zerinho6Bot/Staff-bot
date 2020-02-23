@@ -62,7 +62,8 @@ exports.run = ({ message, fastSend, i18n }) => {
     const Amount = TimeSinceLastDaily.replace(/[^0-9]/g, "")
     const Time = () => {
       const InPlural = Amount === 1 ? "" : "s"
-      const Time = TimeSinceLastDaily.replace(/([0-9])(\s+)/g, "")
+      const Time = (TimeSinceLastDaily.replace(/([0-9])/g, "")).replace(/\s+/g, "")
+      // Yes, I'm bad at regex, please help me.
       return i18n.__(`Daily_${Time}${InPlural}`)
     }
     fastSend("Daily_errorNoCoinToCollect", false, { amount: Amount, time: Time() })
