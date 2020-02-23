@@ -8,6 +8,6 @@ const I18nModule = require("i18n-nodejs")
  */
 exports.init = (language) => {
   const Path = require("path")
-  const I18n = new I18nModule(language, Path.join(__dirname, "../languages/languages.json"))
+  const I18n = new I18nModule(language, Path.join(__dirname, "../../languages/languages.json"))
   return I18n
 }

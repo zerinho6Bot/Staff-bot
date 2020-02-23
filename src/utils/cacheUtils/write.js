@@ -15,13 +15,13 @@ module.exports.write = (file, content) => {
   }
 
   const Fs = require("fs")
-  Fs.writeFile(Path.join(__dirname, `../cache/${file}.json`), JSON.stringify(content, null, 2), (e) => {
+  Fs.writeFile(Path.join(__dirname, `../../cache/${file}.json`), JSON.stringify(content, null, 2), (e) => {
     if (e) {
       console.log(e)
     }
 
     try {
-      delete require.cache[require.resolve(Path.join(__dirname, `../cache/${file}.json`))]
+      delete require.cache[require.resolve(Path.join(__dirname, `../../cache/${file}.json`))]
     } catch (e) {
       console.log(e)
     }
