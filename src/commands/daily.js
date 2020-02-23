@@ -11,7 +11,7 @@ exports.condition = ({ message, fastSend }) => {
   return true
 }
 
-exports.run = ({ message, fastSend, i18n }) => {
+exports.run = ({ message, fastSend, i18n, log }) => {
   const Profile = new CacheUtils.Profile(message.guild)
   const Coins = Profile.GuildCoins
   const CoinsName = Object.keys(Coins)
@@ -25,6 +25,7 @@ exports.run = ({ message, fastSend, i18n }) => {
   }
 
   if (!Profile.UserBank(message.author.id)) {
+    log.trace("Creating bank for user ", message.author.id)
     Profile.GuildBank[message.author.id] = Profile.DefaultUserBankProperties
     createdToday = true
     requiresUpdate = true
@@ -34,6 +35,7 @@ exports.run = ({ message, fastSend, i18n }) => {
   const DateClass = new DateUtils.Date(UserBank.lastDaily)
 
   if (DateClass.isOldDay || createdToday) {
+    log.trace("The user ", message.author.id, " was created today or passed a day.")
     for (let i = 0; i < CoinsName.length; i++) {
       if (!UserBank.wallet[CoinsName[i]]) {
         UserBank.wallet[CoinsName[i]] = Profile.DefaultMoneyProperties
@@ -42,10 +44,12 @@ exports.run = ({ message, fastSend, i18n }) => {
       CollectedCoins.push(CoinsName[i])
       requiresUpdate = true
     }
+    log.trace("Defined user ", message.author.id, " lastDaily to ", new Date().getTime().toString())
     UserBank.lastDaily = new Date().getTime()
   }
 
   if (requiresUpdate) {
+    log.log("Updated guildConfig.")
     CacheUtils.write("guildConfig", Profile.guildConfig)
   }
 
@@ -62,10 +66,11 @@ exports.run = ({ message, fastSend, i18n }) => {
     const Amount = TimeSinceLastDaily.replace(/[^0-9]/g, "")
     const Time = () => {
       const InPlural = Amount === 1 ? "" : "s"
-      const Time = (TimeSinceLastDaily.replace(/([0-9])/g, "")).replace(/\s+/g, "")
+      const Time = (TimeSinceLastDaily.replace(/([0-9])/g, "")).replace(/\s+/g, "").replace("-", "")
       // Yes, I'm bad at regex, please help me.
       return i18n.__(`Daily_${Time}${InPlural}`)
     }
+    log.trace("User ", message.author.id, " has no coin to collect, timestamp is ", new Date().getTime().toString(), " his last daily was ", TimeSinceLastDaily)
     fastSend("Daily_errorNoCoinToCollect", false, { amount: Amount, time: Time() })
     return
   }
