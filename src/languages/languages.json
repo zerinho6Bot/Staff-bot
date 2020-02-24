@@ -427,6 +427,10 @@
         "pt-br": "Não tem nenhuma moeda para coletar ainda, a ultima vez que você coletou foi a {{amount}} {{time}} atrás, você precisa esperar 24 horas.",
         "en": "There's no coin for you to collect yet, your last daily was {{amount}} {{time}} ago, you need to wait 24 hours."
     },
+    "Daily_errorNoCoinToCollectSameDay": {
+        "pt-br": "Você coletou sua moeda hoje, daqui a {{time}} você vai poder coletar de novo.",
+        "en": "You collected you coin today, in {{time}} you'll be able to collect again."
+    },
     "Daily_second": {
         "pt-br": "segundo",
         "en": "second"

@@ -9,7 +9,7 @@ exports.Date = class {
       second: this.date.getSeconds(),
       minute: this.date.getMinutes(),
       hour: this.date.getHours(),
-      day: this.date.getDay(),
+      day: this.date.getDate(),
       month: this.date.getMonth(),
       year: this.date.getFullYear()
     }
@@ -18,7 +18,7 @@ exports.Date = class {
       second: this.jsDate.getSeconds(),
       minute: this.jsDate.getMinutes(),
       hour: this.jsDate.getHours(),
-      day: this.jsDate.getDay(),
+      day: this.jsDate.getDate(),
       month: this.jsDate.getMonth(),
       year: this.jsDate.getFullYear()
     }
@@ -79,12 +79,12 @@ exports.Date = class {
   get fromNow () {
     let time = "second"
 
-    if ((this.js.minute - this.givenDate.minute) > 0) {
-      time = "minute"
-    }
+    if (!this.isOldDay) {
+      const MissingHours = 24 - (this.givenDate.hour + 1)
+      const MissingMinutes = 60 - (this.givenDate.minute + 1)
+      const MissingSeconds = 60 - (this.givenDate.second + 1)
 
-    if ((this.js.hour - this.givenDate.hour) > 0) {
-      time = "hour"
+      return `${MissingHours} hour ${MissingMinutes} minute ${MissingSeconds} second`
     }
 
     if (this.isOldDay) {

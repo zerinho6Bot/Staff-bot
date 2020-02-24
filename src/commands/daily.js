@@ -66,12 +66,31 @@ exports.run = ({ message, fastSend, i18n, log }) => {
     const Amount = TimeSinceLastDaily.replace(/[^0-9]/g, "")
     const Time = () => {
       const InPlural = Amount === 1 ? "" : "s"
-      const Time = (TimeSinceLastDaily.replace(/([0-9])/g, "")).replace(/\s+/g, "").replace("-", "")
-      // Yes, I'm bad at regex, please help me.
-      return i18n.__(`Daily_${Time}${InPlural}`)
+
+      const BasicTimes = ["day", "month", "year"]
+
+      if (BasicTimes.some((elem) => TimeSinceLastDaily.includes(elem))) {
+        const Time = (TimeSinceLastDaily.replace(/([0-9])/g, "")).replace(/\s+/g, "").replace("-", "")
+        // Yes, I'm bad at regex, please help me.
+        return i18n.__(`Daily_${Time}${InPlural}`)
+      } else {
+        const SplitTime = TimeSinceLastDaily.split(" ")
+        const Hour = SplitTime[0]
+        const Minute = SplitTime[2]
+        const Second = SplitTime[4]
+        const HourStr = Hour === 1 ? i18n.__("Daily_hour") : i18n.__("Daily_hours")
+        const MinuteStr = Minute === 1 ? i18n.__("Daily_minute") : i18n.__("Daily_minutes")
+        const SecondStr = Second === 1 ? i18n.__("Daily_second") : i18n.__("Daily_seconds")
+
+        return i18n.__("Daily_errorNoCoinToCollectSameDay", { time: `${Hour} ${HourStr} ${Minute} ${MinuteStr} ${Second} ${SecondStr}` })
+      }
     }
     log.trace("User ", message.author.id, " has no coin to collect, timestamp is ", new Date().getTime().toString(), " his last daily was ", TimeSinceLastDaily)
-    fastSend("Daily_errorNoCoinToCollect", false, { amount: Amount, time: Time() })
+    if (Time().includes(i18n.__("Daily_second"))) {
+      fastSend(Time(), true)
+    } else {
+      fastSend("Daily_errorNoCoinToCollect", false, { amount: Amount, time: Time() })
+    }
     return
   }
   fastSend(collectedCoinsStr, true)
