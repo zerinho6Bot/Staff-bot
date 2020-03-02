@@ -1,6 +1,6 @@
 /**
  * Date class with many functions to check day/month/year difference.
- * @param {number} date - The date timestamp in milliseconds.
+ * @param {Number} date - The date timestamp in milliseconds.
  */
 exports.Date = class {
   constructor (date) {
@@ -26,7 +26,7 @@ exports.Date = class {
 
   /**
    * Gets if the year of the given date to the class is older than the actual year.
-   * @returns {boolean}
+   * @returns {Boolean}
    */
   get isOldYear () {
     return this.js.year > this.givenDate.year
@@ -34,7 +34,7 @@ exports.Date = class {
 
   /**
    * Gets if the month of the given date to the class is older than the actual month.
-   * @returns {boolean}
+   * @returns {Boolean}
    */
   get isOldMonth () {
     const DifferentYear = this.isOldYear
@@ -50,7 +50,7 @@ exports.Date = class {
 
   /**
    * Gets if the day of the given date to the class is older than the actual day.
-   * @returns {boolean}
+   * @returns {Boolean}
    */
   get isOldDay () {
     const DifferentMonth = this.isOldMonth
@@ -66,7 +66,7 @@ exports.Date = class {
 
   /**
    * Gets the time difference from the given date timestamp to the actual date timestamp
-   * @returns {number} - The difference in milliseconds
+   * @returns {Number} - The difference in milliseconds
    */
   get timeDifference () {
     return this.js.getTime() - this.date.getTime()
@@ -74,15 +74,15 @@ exports.Date = class {
 
   /**
    * Gets a human readable string saying how much time it is since the given date.
-   * @returns {string} - Format: "Amount Time", Amount being a number and Time being like "second", "minute"..etc, example: "4 second"
+   * @returns {String} - Format: "Amount Time", Amount being a number and Time being like "second", "minute"..etc, example: "4 second"
    */
   get fromNow () {
     let time = "second"
 
     if (!this.isOldDay) {
-      const MissingHours = 24 - (this.givenDate.hour + 1)
-      const MissingMinutes = 60 - (this.givenDate.minute + 1)
-      const MissingSeconds = 60 - (this.givenDate.second + 1)
+      const MissingHours = 24 - (this.jsDate.hour + 1)
+      const MissingMinutes = 60 - (this.jsDate.minute + 1)
+      const MissingSeconds = 60 - (this.jsDate.second + 1)
 
       return `${MissingHours} hour ${MissingMinutes} minute ${MissingSeconds} second`
     }

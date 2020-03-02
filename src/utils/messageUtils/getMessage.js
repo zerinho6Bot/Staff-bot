@@ -3,9 +3,9 @@
  * @async
  * @function
  * @param {Object} bot - The Discord bot instance.
- * @param {string} guildId - The guild ID.
- * @param {string} channelId - The channel from the guild ID.
- * @param {string} messageId - The message from the channel ID.
+ * @param {String} guildId - The guild ID.
+ * @param {String} channelId - The channel from the guild ID.
+ * @param {String} messageId - The message from the channel ID.
  * @returns {Promise<Object>} - The found message
  */
 module.exports.getMessage = async (bot, guildId, channelId, messageId) => {

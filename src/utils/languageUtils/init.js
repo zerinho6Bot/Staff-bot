@@ -3,8 +3,8 @@ const I18nModule = require("i18n-nodejs")
 /**
  * Starts the i18n module with the given language.
  * @function
- * @param {string} language - One of the strings included on acceptableLanguages
- * @returns {object}
+ * @param {String} language - One of the strings included on acceptableLanguages
+ * @returns {Object}
  */
 exports.init = (language) => {
   const Path = require("path")

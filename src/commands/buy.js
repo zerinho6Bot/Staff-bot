@@ -63,10 +63,10 @@ exports.run = ({ message, fastSend, fastEmbed, args, i18n }) => {
   const CheckFor = args[1].toLowerCase() === i18n.__("Buy_roleLiteral") ? Roles : Tags
   const CheckForStr = args[1].toLowerCase() === i18n.__("Buy_roleLiteral") ? i18n.__("Buy_roleLiteral") : i18n.__("Buy_tagLiteral")
 
-  // Not using switch becuase of the eslint rule no-case-declarations, and I kinda want to optimize things you know.
+  // Not using switch because of the eslint rule no-case-declarations, and I kinda want to optimize things you know.
 
   if (!CheckFor[args[2]]) {
-    fastSend("Currency_errorCoinDontExist", false, { argument: i18n.__("Help_SecondArgument") })
+    fastSend("Buy_errorWrongOperation", false, { argument: i18n.__("Help_SecondArgument"), itemName: args[2], itemType: CheckFor })
     return
   }
 

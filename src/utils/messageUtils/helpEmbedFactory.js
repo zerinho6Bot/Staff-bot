@@ -4,8 +4,8 @@
  * @param {Object} message
  * @param {Object} i18n
  * @param {Object} Options - Informations about the command
- * @param {number} Options.argumentsLength - How many arguments the command can have
- * @param {boolean} Options.argumentsNeeded - If the arguments that the command can have are needed for the command to run
+ * @param {Number} Options.argumentsLength - How many arguments the command can have
+ * @param {Boolean} Options.argumentsNeeded - If the arguments that the command can have are needed for the command to run
  * @param {Array<string>} Options.argumentsFormat - A format example of each argument that the command can have.
  * @returns {Object} - The pre-built embed
  */

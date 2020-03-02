@@ -1,7 +1,7 @@
 /**
  * Splits the message content.
  * @function
- * @param {Object} message 
+ * @param {Object} message
  * @returns {Array<String>} - Returns a array made of the message splited, it'll be called args by many functions.
  */
 const Args = (message) => {
@@ -48,7 +48,7 @@ exports.condition = (message, keys, bot, log) => {
 
   if (UserCooldown > 0) {
     if (UserCooldown === 4) {
-      Send("Message_errorMissingEmbedLinks", false, { amount: 3 })
+      Send("Message_errorCooldownWarning", false, { amount: 3 })
     }
     return
   }

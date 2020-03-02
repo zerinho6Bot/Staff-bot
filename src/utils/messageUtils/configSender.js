@@ -10,8 +10,8 @@ module.exports.configSender = (channel, translate) => {
    * Starts typing before sending the message, then stops typing and then returns the message.
    * @async
    * @function
-   * @param {string} content
-   * @param {boolean} [noTranslation=false] - If you don't want the content to get translate by the i18n module
+   * @param {String} content
+   * @param {Boolean} [noTranslation=false] - If you don't want the content to get translate by the i18n module
    * @param {Object} [parameters] - The context of variables to send to i18n
    * @returns {Promise<Object>} - The sent message
    */

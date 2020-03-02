@@ -351,6 +351,10 @@
         "pt-br": "Compre uma tag ou um cargo.\n\nO primeiro argumento é o tipo do item, que pode ser cargo ou tag.\n\nO segundo argumento é o nome do item.",
         "en": "Buy a tag or a role.\n\nThe first item is the type of the item, that can be role or tag.\n\nThe second argument is the item name."
     },
+    "Buy_errorWrongOperation": {
+        "pt-br": "{{argument}}, essa(e) {{itemName}} não existe entre (a)os {{itemType}} do servidor.",
+        "en": "{{argument}}, that {{itemName}} doesn't exist on the server {{itemType}}."
+    },
     "Buy_itemTypeExample": {
         "pt-br": "``cargo`` ou ``tag``",
         "en": "``role`` or ``tag``"
