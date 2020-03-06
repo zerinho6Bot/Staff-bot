@@ -9,20 +9,20 @@
  * @returns {Promise<Object>} - The found message
  */
 module.exports.getMessage = async (bot, guildId, channelId, messageId) => {
-  const Guild = bot.guilds.get(guildId)
+  const Guild = bot.guilds.cache.get(guildId)
 
   if (Guild === undefined) {
     return null
   }
 
-  const Channel = Guild.channels.get(channelId)
+  const Channel = Guild.channels.cache.get(channelId)
 
   if (Channel === undefined) {
     return null
   }
 
   try {
-    const Message = await Channel.fetchMessage(messageId)
+    const Message = await Channel.messages.fetch(messageId)
     return Message || null
   } catch { }
 

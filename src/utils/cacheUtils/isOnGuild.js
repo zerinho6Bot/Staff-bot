@@ -6,5 +6,5 @@
  * @returns {Boolean}
  */
 module.exports.isOnGuild = (bot, guildId) => {
-  return bot.guilds.has(guildId)
+  return bot.guilds.cache.has(guildId)
 }

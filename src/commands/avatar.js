@@ -1,5 +1,5 @@
 exports.run = ({ message, fastEmbed, fastSend }) => {
-  fastEmbed.setImage(message.mentions.users.first() ? message.mentions.users.first().displayAvatarURL : message.author.displayAvatarURL)
+  fastEmbed.setImage(message.mentions.users.first() ? message.mentions.users.first().displayAvatarURL({ size: 2048 }) : message.author.displayAvatarURL({ size: 2048 }))
   fastSend(fastEmbed, true)
 }
 

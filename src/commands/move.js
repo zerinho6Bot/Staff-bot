@@ -24,12 +24,12 @@ exports.condition = async ({ bot, message, fastSend, args, i18n }) => {
   }
 
   channel = channel[channel.length - 1]
-  if (!message.guild.channels.has(channel)) {
+  if (!message.guild.channels.cache.has(channel)) {
     fastSend("Move_errorChannelDontExist", false, { argument: i18n.__("Help_SecondArgument") })
     return false
   }
 
-  channel = message.guild.channels.get(channel)
+  channel = message.guild.channels.cache.get(channel)
 
   if (channel === undefined) {
     fastSend("Move_errorDintGetChannel", false, { argument: i18n.__("Help_SecondArgument") })
@@ -83,7 +83,7 @@ exports.condition = async ({ bot, message, fastSend, args, i18n }) => {
 exports.run = async ({ bot, message, fastSend, fastEmbed, args, i18n }) => {
   const Match = args[1].match(MessageRegex)
   const MatchChannel = args[2].match(ChannelRegex)
-  const Channel = message.guild.channels.get(MatchChannel[1])
+  const Channel = message.guild.channels.cache.get(MatchChannel[1])
   const GivenMessage = await MessageUtils.getMessage(bot, Match[1], Match[2], Match[3])
 
   if (GivenMessage.embeds.length < 1) {

@@ -70,7 +70,7 @@ exports.run = ({ message, args, fastSend, i18n }) => {
       return
     }
 
-    if (!message.guild.roles.has(args[2])) {
+    if (!message.guild.roles.cache.has(args[2])) {
       fastSend("Sale_errorRoleDontExist", false, { argument: i18n.__("Help_SecondArgument") })
       return
     }
@@ -78,13 +78,13 @@ exports.run = ({ message, args, fastSend, i18n }) => {
     const Member = message.guild.member(message.author.id)
 
     if (Member) {
-      if (message.guild.roles.get(args[2]).position > Member.highestRole.position) {
+      if (message.guild.roles.cache.get(args[2]).position > Member.highestRole.position) {
         fastSend("Sale_errorYourPositionTooLow", false, { argument: i18n.__("Help_SecondArgument") })
         return
       }
     }
 
-    const Role = message.guild.roles.get(args[2])
+    const Role = message.guild.roles.cache.get(args[2])
 
     if (Profile.FindGuildItem("roles", Role.name.replace(/\s+/g, ""))) {
       fastSend("Sale_errorRoleAlreadyInSale", false, { argument: i18n.__("Help_SecondArgument") })

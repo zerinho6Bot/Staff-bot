@@ -70,8 +70,7 @@ exports.run = async (message, keys, bot, log) => {
   const SafeArgs = Args(message)
   const SafeCommandName = CommandName(SafeArgs, keys)
   const Command = Commands[SafeCommandName]
-  const GuildDefinedLanguage = guildConfig[message.guild.id] && guildConfig[message.guild.id].language ? 
-  guildConfig[message.guild.id].language : ""
+  const GuildDefinedLanguage = guildConfig[message.guild.id] && guildConfig[message.guild.id].language ? guildConfig[message.guild.id].language : ""
   const I18n = await LanguageUtils.init(GuildDefinedLanguage === "" ? LanguageUtils.fallbackLanguage : GuildDefinedLanguage)
   const Send = MessageUtils.ConfigSender(message.channel, I18n)
   const Arguments = { message, keys, bot, args: SafeArgs, fastEmbed: MessageUtils.FastEmbed(message), fastSend: Send, i18n: I18n, log: log }

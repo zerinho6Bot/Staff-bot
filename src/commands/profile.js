@@ -47,8 +47,8 @@ exports.run = ({ message, fastEmbed, fastSend, i18n }) => {
 
   fastEmbed.setImage(User.background)
   fastEmbed.setDescription(User.description)
-  fastEmbed.setThumbnail(FromUser.displayAvatarURL)
-  fastEmbed.setAuthor(`${FromUser.tag}${Profile.clan.length > 0 ? ` [${Profile.clan}]` : ""}`, FromUser.displayAvatarURL)
+  fastEmbed.setThumbnail(FromUser.displayAvatarURL())
+  fastEmbed.setAuthor(`${FromUser.tag}${Profile.clan.length > 0 ? ` [${Profile.clan}]` : ""}`, FromUser.displayAvatarURL())
 
   if (GuildProfile.UserBank(FromUser.id) && Object.keys(GuildProfile.UserWallet(FromUser.id)).length > 0) {
     const MoneyString = () => {
@@ -56,7 +56,7 @@ exports.run = ({ message, fastEmbed, fastSend, i18n }) => {
       let str = ""
       for (let i = 0; i < Coins.length; i++) {
         const Coin = GuildProfile.GuildCoin(Coins[i])
-        str += `${isNaN(Coin.emoji) ? Coin.emoji : `<:${message.guild.emojis.get(Coin.emoji).name}:${message.guild.emojis.get(Coin.emoji).id}>`} ${Coin.code}: ${GuildProfile.UserWallet(FromUser.id)[Coins[i]].holds} `
+        str += `${isNaN(Coin.emoji) ? Coin.emoji : `<:${message.guild.emojis.cache.get(Coin.emoji).name}:${message.guild.emojis.cache.get(Coin.emoji).id}>`} ${Coin.code}: ${GuildProfile.UserWallet(FromUser.id)[Coins[i]].holds} `
       }
 
       return str

@@ -49,14 +49,14 @@ exports.run = ({ message, fastSend, i18n, log }) => {
   }
 
   if (requiresUpdate) {
-    log.log("Updated guildConfig.")
+    log.trace("Updated guildConfig.")
     CacheUtils.write("guildConfig", Profile.guildConfig)
   }
 
   let collectedCoinsStr = ""
   for (let i = 0; i < CollectedCoins.length; i++) {
     const Coin = Coins[CollectedCoins[i]]
-    collectedCoinsStr += `${isNaN(Coin.emoji) ? Coin.emoji : `<:${message.guild.emojis.get(Coin.emoji).name}:${message.guild.emojis.get(Coin.emoji).id}>`}${Coin.code} +**${Coin.value}**\n`
+    collectedCoinsStr += `${isNaN(Coin.emoji) ? Coin.emoji : `<:${message.guild.emojis.cache.get(Coin.emoji).name}:${message.guild.emojis.cache.get(Coin.emoji).id}>`}${Coin.code} +**${Coin.value}**\n`
   }
 
   if (collectedCoinsStr.length <= 0) {

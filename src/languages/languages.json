@@ -843,6 +843,42 @@
         "pt-br": "(Link_de_Imagem ou texto)",
         "en": "(ImageLink or text)"
     },
+    "Literal_serverinfo": {
+        "pt-br": "Serverinfo",
+        "en": "Serverinfo"
+    },
+    "serverinfo_description": {
+        "pt-br": "Mostra as informações do servidor.",
+        "en": "Show the server informations."
+    },
+    "Serverinfo_members": {
+        "pt-br": "Membros",
+        "en": "Members"
+    },
+    "Serverinfo_roles": {
+        "pt-br": "Cargos",
+        "en": "Roles"
+    },
+    "Serverinfo_region": {
+        "pt-br": "Região",
+        "en": "Region"
+    },
+    "Serverinfo_guildId": {
+        "pt-br": "ID do Servidor",
+        "en": "Guild ID"
+    },
+    "Serverinfo_verificationLevel": {
+        "pt-br": "Nivel de Verificação",
+        "en": "Verification Level"
+    },
+    "Serverinfo_features": {
+        "pt-br": "Funções Especiais",
+        "en": "Features"
+    },
+    "Serverinfo_owner": {
+        "pt-br": "Dono",
+        "en": "Owner"
+    },
     "Message_errorImpossibleReply": {
         "pt-br": "Eu não consigo enviar uma mensagem para esse canal, por favor, avise a um staff.",
         "en": "I can't send a message to that channel, please warn a staff."
