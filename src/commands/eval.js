@@ -13,7 +13,7 @@ exports.condition = ({ message, args, fastSend, keys }) => {
 }
 
 exports.run = async ({ message, args, fastEmbed, fastSend, i18n, keys }) => {
-  const FullArgs = args.splice(2, args.length - 1).join(" ")
+  const FullArgs = args.splice(1, args.length).join(" ")
   const Result = async () => {
     try {
       // eslint-disable-next-line no-eval

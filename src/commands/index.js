@@ -17,3 +17,9 @@ module.exports.myprofile = require("./myprofile.js")
 module.exports.eval = require("./eval.js")
 module.exports.guilddefault = require("./guilddefault.js")
 module.exports.serverinfo = require("./serverinfo.js")
+module.exports.systeminfo = require("./systeminfo.js")
+module.exports.advanced = {
+  ProfileCategory: ["profile", "daily", "currency", "buy", "give", "sale", "unsell", "moneymanager", "itemmanager", "iteminfo", "myprofile", "guilddefault"],
+  MiscCategory: ["avatar", "serverinfo", "servericon", "help", "eval", "systeminfo"],
+  "Mods/ConfigCategory": ["definelanguage", "move"]
+}
