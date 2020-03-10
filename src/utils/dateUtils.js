@@ -80,9 +80,9 @@ exports.Date = class {
     let time = "second"
 
     if (!this.isOldDay) {
-      const MissingHours = 24 - (this.jsDate.hour + 1)
-      const MissingMinutes = 60 - (this.jsDate.minute + 1)
-      const MissingSeconds = 60 - (this.jsDate.second + 1)
+      const MissingHours = 24 - (this.js.hour + 1)
+      const MissingMinutes = 60 - (this.js.minute + 1)
+      const MissingSeconds = 60 - (this.js.second + 1)
 
       return `${MissingHours} hour ${MissingMinutes} minute ${MissingSeconds} second`
     }
