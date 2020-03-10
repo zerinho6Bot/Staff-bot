@@ -9,25 +9,31 @@ const CooldownWarning = new Set()
  */
 module.exports.applyCooldown = (id) => {
   const ApplyCooldownWarning = () => {
+    Log.info(`Applying cooldown for user(${id})`)
     CooldownWarning.add(id)
 
     setTimeout(() => {
+      Log.info(`Removing cooldown for user(${id})`)
       CooldownWarning.delete(id)
     }, 3000)
   }
 
   if (CooldownWarning.has(id)) {
+    Log.info(`User(${id}) is trying to use commands too fast after warning about it...`)
     return 3
   }
 
   if (Cooldown.has(id)) {
+    Log.info(`User(${id}) is trying to use commands too fast! Putting it into cooldown warning.`)
     ApplyCooldownWarning()
 
     return 4
   }
 
+  Log.info(`Adding cooldown to user(${id})`)
   Cooldown.add(id)
   setTimeout(() => {
+    Log.info(`Deleting cooldown for user(${id})`)
     Cooldown.delete(id)
   }, 3000)
 

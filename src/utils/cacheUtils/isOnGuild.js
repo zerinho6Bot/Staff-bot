@@ -6,5 +6,7 @@
  * @returns {Boolean}
  */
 module.exports.isOnGuild = (bot, guildId) => {
-  return bot.guilds.cache.has(guildId)
+  const isInIt = bot.guilds.cache.has(guildId)
+  Log.info(`Looking if bot is on guild(${guildId}): ${isInIt}`)
+  return isInIt
 }

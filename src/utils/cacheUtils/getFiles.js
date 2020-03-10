@@ -6,5 +6,7 @@ const Cache = require("../../cache/index.js")
  * @returns {Array<String>}
  */
 module.exports.getFiles = () => {
-  return Object.keys(Cache)
+  const Files = Object.keys(Cache)
+  Log.info("Getting files: " + Files.join(", "))
+  return Files
 }

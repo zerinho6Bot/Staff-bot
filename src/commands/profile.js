@@ -74,7 +74,6 @@ exports.run = ({ message, fastEmbed, fastSend, i18n }) => {
   try {
     fastSend(fastEmbed, true)
   } catch (e) {
-    console.log(e)
     if (Profile.background.length <= 0 && Guild.profile.defaultConfig.background === GuildProfile.defaultBackground) {
       return
     }

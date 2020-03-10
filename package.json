@@ -4,7 +4,7 @@
   "description": "A utility bot for discord staffs.",
   "main": "src/index.js",
   "scripts": {
-    "test": "standard && node src/index.js",
+    "test": "standard --global globalThis --global Log && node src/index.js",
     "start": "node src/index.js"
   },
   "keywords": [
@@ -37,6 +37,7 @@
     "extends": [
       "standard"
     ],
+    "global": ["globalThis", "Log"],
     "globals": {
       "Atomics": "readonly",
       "SharedArrayBuffer": "readonly"
