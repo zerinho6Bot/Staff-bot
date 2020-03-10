@@ -1,9 +1,9 @@
 exports.run = ({ message, fastEmbed, fastSend }) => {
-  if (message.guild.iconURL === null) {
+  if (message.guild.iconURL() === null) {
     fastSend("No icon")
     return
   }
-  fastEmbed.setImage(message.guild.iconURL)
+  fastEmbed.setImage(message.guild.iconURL({ size: 2048 }))
   fastSend(fastEmbed, true)
 }
 

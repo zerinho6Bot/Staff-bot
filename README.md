@@ -57,6 +57,8 @@ It supports Discord Bots and is where the official Staff Bot is hosted.
 
 ## Built With
 
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+
 * [Node.js](https://nodejs.org/en/) - The JavaScript framework used
 * [Discord.js](https://discord.js.org/) - Dependency Management
 
@@ -66,7 +68,7 @@ It supports Discord Bots and is where the official Staff Bot is hosted.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/moruzerinho6/Staff-bot/blob/master/LICENSE) file for details
 
 ## Acknowledgments
 

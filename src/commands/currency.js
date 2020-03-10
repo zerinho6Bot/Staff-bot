@@ -20,7 +20,7 @@ exports.condition = ({ message, args, fastSend, fastEmbed, i18n }) => {
     if (isNaN(args[1]) && args[1].length < 20 && GuildCoins[args[1]]) {
       const Coin = Profile.GuildCoin(args[1])
       fastEmbed.setTitle(`${args[1]} (${Coin.code})`)
-      fastEmbed.setDescription(`${isNaN(Coin.emoji) ? Coin.emoji : `<:${message.guild.emojis.get(Coin.emoji).name}:${message.guild.emojis.get(Coin.emoji).id}>`} - _${i18n.__("Currency_coinValue", { value: Coin.value })}_`)
+      fastEmbed.setDescription(`${isNaN(Coin.emoji) ? Coin.emoji : `<:${message.guild.emojis.cache.get(Coin.emoji).name}:${message.guild.emojis.get(Coin.emoji).id}>`} - _${i18n.__("Currency_coinValue", { value: Coin.value })}_`)
       fastSend(fastEmbed)
       return false
     }
@@ -106,7 +106,7 @@ exports.create = ({ message, args, fastSend, Profile, i18n }) => {
     return
   }
 
-  if (isNaN(args[5]) || (args[5].length > 18 || args[5].length < 16) || message.guild.emojis.has(args[5]) === undefined) {
+  if (isNaN(args[5]) || (args[5].length > 18 || args[5].length < 16) || !message.guild.emojis.cache.has(args[5])) {
     fastSend("Currency_errorInvalidCoinEmoji", false, { argument: i18n.__("Help_FifthArgument") })
     return
   }
@@ -152,7 +152,7 @@ exports.edit = ({ message, args, fastSend, Profile, i18n }) => {
       Profile.GuildCoin(args[2]).code = args[4]
       break
     case i18n.__("Currency_emoji"):
-      if (isNaN(args[4]) || (args[4].length > 18 || args[4].length < 16) || !message.guild.emojis.has(args[4])) {
+      if (isNaN(args[4]) || (args[4].length > 18 || args[4].length < 16) || !message.guild.emojis.cache.has(args[4])) {
         fastSend("Currency_errorInvalidCoinEmoji", false, { argument: i18n.__("Help_FourthArgument") })
         return
       }

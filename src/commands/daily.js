@@ -11,7 +11,7 @@ exports.condition = ({ message, fastSend }) => {
   return true
 }
 
-exports.run = ({ message, fastSend, i18n, log }) => {
+exports.run = ({ message, fastSend, i18n }) => {
   const Profile = new CacheUtils.Profile(message.guild)
   const Coins = Profile.GuildCoins
   const CoinsName = Object.keys(Coins)
@@ -25,7 +25,7 @@ exports.run = ({ message, fastSend, i18n, log }) => {
   }
 
   if (!Profile.UserBank(message.author.id)) {
-    log.trace("Creating bank for user ", message.author.id)
+    Log.info("Creating bank for user ", message.author.id)
     Profile.GuildBank[message.author.id] = Profile.DefaultUserBankProperties
     createdToday = true
     requiresUpdate = true
@@ -35,7 +35,7 @@ exports.run = ({ message, fastSend, i18n, log }) => {
   const DateClass = new DateUtils.Date(UserBank.lastDaily)
 
   if (DateClass.isOldDay || createdToday) {
-    log.trace("The user ", message.author.id, " was created today or passed a day.")
+    Log.info("The user ", message.author.id, " was created today or passed a day.")
     for (let i = 0; i < CoinsName.length; i++) {
       if (!UserBank.wallet[CoinsName[i]]) {
         UserBank.wallet[CoinsName[i]] = Profile.DefaultMoneyProperties
@@ -44,19 +44,19 @@ exports.run = ({ message, fastSend, i18n, log }) => {
       CollectedCoins.push(CoinsName[i])
       requiresUpdate = true
     }
-    log.trace("Defined user ", message.author.id, " lastDaily to ", new Date().getTime().toString())
+    Log.info("Defined user ", message.author.id, " lastDaily to ", new Date().getTime().toString())
     UserBank.lastDaily = new Date().getTime()
   }
 
   if (requiresUpdate) {
-    log.log("Updated guildConfig.")
+    Log.info("Updated guildConfig.")
     CacheUtils.write("guildConfig", Profile.guildConfig)
   }
 
   let collectedCoinsStr = ""
   for (let i = 0; i < CollectedCoins.length; i++) {
     const Coin = Coins[CollectedCoins[i]]
-    collectedCoinsStr += `${isNaN(Coin.emoji) ? Coin.emoji : `<:${message.guild.emojis.get(Coin.emoji).name}:${message.guild.emojis.get(Coin.emoji).id}>`}${Coin.code} +**${Coin.value}**\n`
+    collectedCoinsStr += `${isNaN(Coin.emoji) ? Coin.emoji : `<:${message.guild.emojis.cache.get(Coin.emoji).name}:${message.guild.emojis.cache.get(Coin.emoji).id}>`}${Coin.code} +**${Coin.value}**\n`
   }
 
   if (collectedCoinsStr.length <= 0) {
@@ -85,7 +85,7 @@ exports.run = ({ message, fastSend, i18n, log }) => {
         return i18n.__("Daily_errorNoCoinToCollectSameDay", { time: `${Hour} ${HourStr} ${Minute} ${MinuteStr} ${Second} ${SecondStr}` })
       }
     }
-    log.trace("User ", message.author.id, " has no coin to collect, timestamp is ", new Date().getTime().toString(), " his last daily was ", TimeSinceLastDaily)
+    Log.info("User ", message.author.id, " has no coin to collect, timestamp is ", new Date().getTime().toString(), " his last daily was ", TimeSinceLastDaily)
     if (Time().includes(i18n.__("Daily_second"))) {
       fastSend(Time(), true)
     } else {

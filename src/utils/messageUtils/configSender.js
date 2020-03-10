@@ -18,6 +18,9 @@ module.exports.configSender = (channel, translate) => {
   const Send = async (content, noTranslation, parameters) => {
     content = noTranslation ? content : translate.__(content, parameters)
 
+    if (!noTranslation) {
+      Log.info(`Getting translation for ${content} with the parameters ${JSON.stringify(parameters)}`)
+    }
     channel.startTyping(6)
     const Message = await channel.send(content)
     channel.stopTyping(true)

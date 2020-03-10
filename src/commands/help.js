@@ -3,14 +3,21 @@ const { MessageUtils } = require("../utils/index.js")
 
 exports.run = ({ bot, message, keys, fastSend, fastEmbed, args, i18n }) => {
   if (args.length < 2) {
-    fastEmbed.setTitle(i18n.__("Help_Commands"))
-    fastEmbed.setDescription("``" + Object.keys(Commands).join("``, ``") + "``")
-
+    const Advanced = Commands.advanced
+    const AdvancedKeys = Object.keys(Advanced)
+    for (let i = 0; i < AdvancedKeys.length; i++) {
+      const Value = Advanced[AdvancedKeys[i]]
+      fastEmbed.addField(`**${i18n.__(`Help_${AdvancedKeys[i]}`)}** (${Value.length})`, "``" + Value.join("``, ``") + "``")
+    }
+    // fastEmbed.setTitle(i18n.__("Help_Commands"))
+    // fastEmbed.setDescription("``" + Object.keys(Commands).join("``, ``") + "``")
+    // TODO: Pagination for more than embed.fields limit categories
     fastSend(fastEmbed, true)
     return
   }
 
   const SafeCommandName = args[1].toLowerCase()
+  Commands.splice(Commands.indexOf("advanced"), 1)
   if (!Object.keys(Commands).includes(SafeCommandName)) {
     fastSend("Help_errorCommandDontExist")
     return

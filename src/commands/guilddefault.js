@@ -22,7 +22,7 @@ exports.condition = ({ message, args, fastSend, i18n }) => {
   const FullArgument = args.slice(2).join(" ")
   switch (args[1].toLowerCase()) {
     case i18n.__("Myprofile_background"):
-      if (!isNaN(args[2]) || !FullArgument.match(/(https?:\/\/.*\.(?:png|jpg|gif))/i)) {
+      if (!isNaN(args[2]) || !FullArgument.match(/(https?:\/\/.*\.(?:png|jpg|gif))/i) || FullArgument.length > 100) {
         fastSend("guildDefault_errorWrongBackgroundLink", false, { argument: i18n.__("Help_SecondArgument") })
         return false
       }

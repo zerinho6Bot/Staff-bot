@@ -19,6 +19,54 @@
         "pt-br": "Você",
         "en": "You"
     },
+    "Global_January": {
+        "pt-br": "Janeiro",
+        "en": "January"
+    },
+    "Global_February": {
+        "pt-br": "Fevereiro",
+        "en": "February"
+    },
+    "Global_March": {
+        "pt-br": "Março",
+        "en": "March"
+    },
+    "Global_April": {
+        "pt-br": "Abril",
+        "en": "April"
+    },
+    "Global_May": {
+        "pt-br": "Maio",
+        "en": "May"
+    },
+    "Global_June": {
+        "pt-br": "Junho",
+        "en": "June"
+    },
+    "Global_July": {
+        "pt-br": "Julho",
+        "en": "July"
+    },
+    "Global_August": {
+        "pt-br": "Agosto",
+        "en": "August"
+    },
+    "Global_September": {
+        "pt-br": "Setembro",
+        "en": "September"
+    },
+    "Global_October": {
+        "pt-br": "Outubro",
+        "en": "October"
+    },
+    "Global_November": {
+        "pt-br": "Novembro",
+        "en": "November"
+    },
+    "Global_December": {
+        "pt-br": "Dezembro",
+        "en": "December"
+    },
     "Help_Info": {
         "pt-br": "Informações",
         "en": "Info"
@@ -102,6 +150,18 @@
     "Example_Language": {
         "pt-br": "pt-br",
         "en": "en"
+    },
+    "Help_ProfileCategory": {
+        "pt-br": "Categoria Profile",
+        "en": "Profile Category"
+    },
+    "Help_MiscCategory": {
+        "pt-br": "Categoria Aleatória",
+        "en": "Misc Category"
+    },
+    "Help_Mods/ConfigCategory": {
+        "pt-br": "Categoria Moderadores/Configurações",
+        "en": "Mods/Config Category"
     },
     "Help_ArgumentsFormat": {
         "pt-br": "Formato dos Argumentos",
@@ -842,6 +902,74 @@
     "guildDefault_secondArgumentExample": {
         "pt-br": "(Link_de_Imagem ou texto)",
         "en": "(ImageLink or text)"
+    },
+    "Literal_serverinfo": {
+        "pt-br": "Serverinfo",
+        "en": "Serverinfo"
+    },
+    "serverinfo_description": {
+        "pt-br": "Mostra as informações do servidor.",
+        "en": "Show the server informations."
+    },
+    "Serverinfo_members": {
+        "pt-br": "Membros",
+        "en": "Members"
+    },
+    "Serverinfo_roles": {
+        "pt-br": "Cargos",
+        "en": "Roles"
+    },
+    "Serverinfo_region": {
+        "pt-br": "Região",
+        "en": "Region"
+    },
+    "Serverinfo_guildId": {
+        "pt-br": "ID do Servidor",
+        "en": "Guild ID"
+    },
+    "Serverinfo_verificationLevel": {
+        "pt-br": "Nivel de Verificação",
+        "en": "Verification Level"
+    },
+    "Serverinfo_features": {
+        "pt-br": "Funções Especiais",
+        "en": "Features"
+    },
+    "Serverinfo_owner": {
+        "pt-br": "Dono",
+        "en": "Owner"
+    },
+    "Serverinfo_createdAt": {
+        "pt-br": "Criado em",
+        "en": "Created At"
+    },
+    "Literal_systeminfo": {
+        "pt-br": "Systeminfo",
+        "en": "Systeminfo"
+    },
+    "systeminfo_description": {
+        "pt-br": "Mostra informações relacionadas ao bot e o sistema dele.",
+        "en": "Show informations related to the bot and it's system."
+    },
+    "Systeminfo_guilds": {
+        "pt-br": "Servidores",
+        "en": "Guilds"
+    },
+    "Systeminfo_users": {
+        "pt-br": "Usuários",
+        "en": "Users"
+    },
+    "Systeminfo_defaultLanguage": {
+        "pt-br": "Linguagem padrão",
+        "en": "Default Language"
+    },
+    "Systeminfo_ramUsage": {
+        "pt-br": "Uso de RAM",
+        "en": "RAM Usage"
+    },
+    "Systeminfo_uptime": {
+        "pt-br": "Tempo Acordado",
+        "en": "Uptime"
     },
     "Message_errorImpossibleReply": {
         "pt-br": "Eu não consigo enviar uma mensagem para esse canal, por favor, avise a um staff.",

@@ -23,7 +23,7 @@ const { guildConfig } = require("../cache/index.js")
 const { LanguageUtils, MessageUtils } = require("../utils/index.js")
 const Commands = require("../commands/index.js")
 
-exports.condition = (message, keys, bot, log) => {
+exports.condition = (message, keys, bot) => {
   if (message.channel.type === "dm" || !message.content.toLowerCase().startsWith(keys.PREFIX) || message.author.bot) {
     return false
   }
@@ -58,7 +58,7 @@ exports.condition = (message, keys, bot, log) => {
   }
 
   if (!Object.keys(Commands).includes(SafeCommandName)) {
-    log.info(message.author.id, " tried to execute a command that doesn't exist, command:", SafeCommandName)
+    Log.info(message.author.id, " tried to execute a command that doesn't exist, command:", SafeCommandName)
     Send("Help_errorCommandDontExist")
     return
   }
@@ -66,24 +66,23 @@ exports.condition = (message, keys, bot, log) => {
   return true
 }
 
-exports.run = async (message, keys, bot, log) => {
+exports.run = async (message, keys, bot) => {
   const SafeArgs = Args(message)
   const SafeCommandName = CommandName(SafeArgs, keys)
   const Command = Commands[SafeCommandName]
-  const GuildDefinedLanguage = guildConfig[message.guild.id] && guildConfig[message.guild.id].language ? 
-  guildConfig[message.guild.id].language : ""
+  const GuildDefinedLanguage = guildConfig[message.guild.id] && guildConfig[message.guild.id].language ? guildConfig[message.guild.id].language : ""
   const I18n = await LanguageUtils.init(GuildDefinedLanguage === "" ? LanguageUtils.fallbackLanguage : GuildDefinedLanguage)
   const Send = MessageUtils.ConfigSender(message.channel, I18n)
-  const Arguments = { message, keys, bot, args: SafeArgs, fastEmbed: MessageUtils.FastEmbed(message), fastSend: Send, i18n: I18n, log: log }
+  const Arguments = { message, keys, bot, args: SafeArgs, fastEmbed: MessageUtils.FastEmbed(message), fastSend: Send, i18n: I18n, Log }
 
   if (Command.condition !== undefined) {
     const Condition = await Command.condition(Arguments)
 
     if (!Condition) {
-      log.info("Failed condition for command: ", SafeCommandName)
+      Log.info("Failed condition for command: ", SafeCommandName)
       return
     }
   }
-  log.info("User: ", message.author.id, " executed command: ", SafeCommandName)
+  Log.info("User: ", message.author.id, " executed command: ", SafeCommandName)
   Commands[SafeCommandName].run(Arguments)
 }

@@ -7,10 +7,10 @@ const Discord = require("discord.js")
  * @return {Object} - The generated embed
  */
 module.exports.fastEmbed = (message) => {
-  const Embed = new Discord.RichEmbed()
+  const Embed = new Discord.MessageEmbed()
   const Member = message.member
 
-  Embed.setAuthor(Member.user.tag, Member.user.displayAvatarURL)
+  Embed.setAuthor(Member.user.tag, Member.user.displayAvatarURL({ dynamic: true }))
   Embed.setColor(Member.displayHexColor)
   Embed.setTimestamp()
   return Embed

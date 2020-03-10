@@ -45,7 +45,7 @@ exports.condition = ({ message, fastSend, args, i18n }) => {
     return false
   }
 
-  if (ToDeleteStr === "role" && message.guild.roles.get(ToDelete[args[2]].roleId).position > message.guild.member(message.author.id).highestRole.position) {
+  if (ToDeleteStr === "role" && message.guild.roles.cache.get(ToDelete[args[2]].roleId).position > message.guild.member(message.author.id).highestRole.position) {
     fastSend("Unsell_errorYourPositionTooLow")
     return false
   }

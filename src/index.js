@@ -6,16 +6,17 @@ const Path = require("path")
 const Bot = new Discord.Client()
 const Keys = process.env
 const { Message, Ready } = require("./events")
-const Log = require("simple-node-logger").createSimpleLogger({ logFilePath: Path.join(__dirname, "./cache/log.txt") })
+// const Log = require("simple-node-logger").createSimpleLogger({ logFilePath: Path.join(__dirname, "./cache/log.txt") })
+globalThis.Log = require("simple-node-logger").createSimpleLogger({ logFilePath: Path.join(__dirname, "./cache/log.txt") }) // Have fun.
 
 Bot.on("message", (message) => {
   try {
-    if (!Message.condition(message, Keys, Bot, Log)) {
+    if (!Message.condition(message, Keys, Bot)) {
       return
     }
 
-    Log.trace("Message id: ", message.id, " passed conditions with the content: ", message.content)
-    Message.run(message, Keys, Bot, Log)
+    Log.info("Message id: ", message.id, " passed conditions with the content: ", message.content)
+    Message.run(message, Keys, Bot)
   } catch (e) {
     Log.warn("Error while trying to run, info: ", e.toString)
     console.log(e)
@@ -40,7 +41,7 @@ Bot.on("ready", () => {
     write("guildConfig", guildConfig)
   }
 
-  Ready.run(Bot, Keys, Log)
+  Ready.run(Bot, Keys)
 })
 
 Bot.login(Keys.TOKEN)

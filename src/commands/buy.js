@@ -91,9 +91,9 @@ exports.run = ({ message, fastSend, fastEmbed, args, i18n }) => {
   if (CheckForStr === i18n.__("Buy_roleLiteral")) {
     const Member = message.guild.member(message.author.id)
 
-    if (!Member.roles.has(Item.roleId)) {
+    if (!Member.roles.cache.has(Item.roleId)) {
       try {
-        message.guild.member(message.author.id).addRole(Item.roleId)
+        message.guild.member(message.author.id).roles.add(Item.roleId)
       } catch (e) {
         fastSend("Buy_errorCouldntGiveRole")
         return
