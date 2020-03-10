@@ -17,8 +17,9 @@ exports.run = ({ bot, message, keys, fastSend, fastEmbed, args, i18n }) => {
   }
 
   const SafeCommandName = args[1].toLowerCase()
-  Commands.splice(Commands.indexOf("advanced"), 1)
-  if (!Object.keys(Commands).includes(SafeCommandName)) {
+  const CommandKeys = Object.keys(Commands)
+  CommandKeys.splice(CommandKeys.indexOf("advanced"), 1)
+  if (!CommandKeys.includes(SafeCommandName)) {
     fastSend("Help_errorCommandDontExist")
     return
   }
