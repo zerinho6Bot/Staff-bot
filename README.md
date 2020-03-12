@@ -10,13 +10,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-1. [Node.js](https://nodejs.org/en/) atleast 10.x.x version.
+1. [Node.js](https://nodejs.org/en/) atleast 12.x.x version.
 2. [Git](https://git-scm.com/)
 3. [A Discord Account](https://discordapp.com)
 4. [A Discord Application](https://discordapp.com/developers/applications/)
   1. Log in with your Discord account
   2. Go to Applications
-  3. Hiw _New Application_
+  3. Hit _New Application_
   4. Give the bot a name then save the changes.
   5. Then on the menu, click on Bot then click on _Add Bot_ and confirm.
   6. You should see a _Copy Token_, click on it and store it somewhere, you'll need it.
@@ -47,7 +47,7 @@ Staff-bot uses [Standard](https://github.com/standard/standard) so you should to
 
 The only rule that Staff Bot changes from standard is the use of single quotes that's already said to the interpreter on the .eslintrc.json
 
-If unsure of your coding style you can run ``standard --fix`` outside the src folder os it'll fix everything it can for you.
+If unsure of your coding style you can run ``standard --fix`` outside the src folder so it'll fix everything it can for you.
 
 ## Deployment
 
