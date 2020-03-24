@@ -58,6 +58,10 @@ exports.run = ({ message, fastSend, fastEmbed, args, i18n }) => {
     return
   }
 
+  if (args.length < 3) {
+    return
+  }
+  
   const UserWallet = Profile.UserWallet(message.author.id)
   const UserInventory = Profile.UserInventory(message.author.id)
   const CheckFor = args[1].toLowerCase() === i18n.__("Buy_roleLiteral") ? Roles : Tags

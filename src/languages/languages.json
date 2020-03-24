@@ -411,6 +411,10 @@
         "pt-br": "Compre uma tag ou um cargo.\n\nO primeiro argumento é o tipo do item, que pode ser cargo ou tag.\n\nO segundo argumento é o nome do item.",
         "en": "Buy a tag or a role.\n\nThe first item is the type of the item, that can be role or tag.\n\nThe second argument is the item name."
     },
+    "Buy_errorMissingExtraArgument": {
+        "pt-br": "Você esqueceu de enviar o terceiro argumento, exemplo de comando: ``st.buy <tipoDoItem> <nomeDoItem>``\n\nO tipo do item pode ser **tag** ou **cargo** e o nome do item tem que ser digitado exatamente igual como diz na loja(para ver a loja, use apenas ``st!buy``)",
+        "en": "You forgot to add the third argument, command example: ``st.buy <itemType> <itemName>``\n\nThe item type can be **tag** or **role** and the item name should be exactly how it shows on the item list(use ``st.buy`` without arguments to see item list)"
+    },
     "Buy_errorWrongOperation": {
         "pt-br": "{{argument}}, essa(e) {{itemName}} não existe entre (a)os {{itemType}} do servidor.",
         "en": "{{argument}}, that {{itemName}} doesn't exist on the server {{itemType}}."
