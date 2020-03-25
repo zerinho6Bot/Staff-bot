@@ -1,3 +1,4 @@
+/* globals Log */
 const Discord = require("discord.js")
 const Env = require("dotenv")
 Env.config()
@@ -5,9 +6,9 @@ Env.config()
 const Path = require("path")
 const Bot = new Discord.Client()
 const Keys = process.env
-const { Message, Ready } = require("./events")
+const { Message, Ready, ErrorHandler } = require("./events")
 // const Log = require("simple-node-logger").createSimpleLogger({ logFilePath: Path.join(__dirname, "./cache/log.txt") })
-globalThis.Log = require("simple-node-logger").createSimpleLogger({ logFilePath: Path.join(__dirname, "./cache/log.txt") }) // Have fun.
+global.Log = require("simple-node-logger").createSimpleLogger({ logFilePath: Path.join(__dirname, "./cache/log.txt") }) // Have fun.
 
 Bot.on("message", (message) => {
   try {
@@ -15,10 +16,10 @@ Bot.on("message", (message) => {
       return
     }
 
-    Log.info("Message id: ", message.id, " passed conditions with the content: ", message.content)
+    Log.info(`Message id: ${message.id} passed conditions with the content: ${message.content}`)
     Message.run(message, Keys, Bot)
   } catch (e) {
-    Log.warn("Error while trying to run, info: ", e.toString)
+    Log.warn(`Error while trying to run, info: ${e.toString()}`)
     console.log(e)
   }
 })
@@ -32,7 +33,7 @@ Bot.on("ready", () => {
     if (isOnGuild(Bot, Guilds[i])) {
       continue
     }
-    Log.warn("Bot isn't on guild: ", Guilds[i], " anymore, deleting data.")
+    Log.warn(`Bot isn't on guild: ${Guilds[i]} anymore, deleting data.`)
     delete guildConfig[Guilds[i]]
     needsDataUpdate = true
   }
@@ -42,6 +43,10 @@ Bot.on("ready", () => {
   }
 
   Ready.run(Bot, Keys)
+})
+
+Bot.on("error", (err) => {
+  ErrorHandler.run(err)
 })
 
 Bot.login(Keys.TOKEN)
