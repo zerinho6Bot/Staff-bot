@@ -144,8 +144,8 @@
         "en": "#general"
     },
     "Example_Mention": {
-        "pt-br": "@Moru Zerinho6#9939",
-        "en": "@Miki#0777"
+        "pt-br": "@Moru Zerinho6#9939 ou ``desativar``",
+        "en": "@Miki#0777 or ``disable``"
     },
     "Example_Language": {
         "pt-br": "pt-br",
@@ -726,6 +726,10 @@
     "profile_description": {
         "pt-br": "Veja o seu profile no servidor, ou habilite se tiver permissão.",
         "en": "See your guild profile, or enable if you have the permission."
+    },
+    "Profile_disable": {
+        "pt-br": "desativar",
+        "en": "disable"
     },
     "Profile_enablingSystem": {
         "pt-br": "Habilitando o sistema profile, na proxima vez que alguém executar o comando, ele deve funcionar.",

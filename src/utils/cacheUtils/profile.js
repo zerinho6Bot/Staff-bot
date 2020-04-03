@@ -1,4 +1,4 @@
-const Cache = require("../../cache/index.js")
+const Cache = require('../../cache/index.js')
 
 /*
       DO NOT VSCODE FORMAT THIS CODE
@@ -19,9 +19,9 @@ module.exports.Profile = class {
   constructor (guild) {
     this.guild = guild
     this.guildConfig = Cache.guildConfig
-    this.lengthLimit = 20
+    this.lengthLimit = 30
     this.maxGuildCoins = 5
-    this.defaultBackground = "https://cdn.glitch.com/07a1e29d-d555-46aa-9758-a9cb10390ccd%2F1_pBZ1aL7UcriEesvddpPOFg.png?"
+    this.defaultBackground = 'https://cdn.glitch.com/07a1e29d-d555-46aa-9758-a9cb10390ccd%2F1_pBZ1aL7UcriEesvddpPOFg.png?'
   }
 
   /**
@@ -81,7 +81,7 @@ module.exports.Profile = class {
    * @returns {Object}
    */
   GuildCoin (coin) {
-    if (typeof coin !== "string" || coin.length > this.lengthLimit || this.ProfileDisabledForGuild()) {
+    if (typeof coin !== 'string' || coin.length > this.lengthLimit || this.ProfileDisabledForGuild()) {
       return null
     }
 
@@ -125,7 +125,7 @@ module.exports.Profile = class {
    * @returns {Object}
    */
   FindGuildSelling (itemType) {
-    if (typeof itemType !== "string" || this.ProfileDisabledForGuild() || !["roles", "tags"].some((elem) => itemType === elem)) {
+    if (typeof itemType !== 'string' || this.ProfileDisabledForGuild() || !['roles', 'tags'].some((elem) => itemType === elem)) {
       return null
     }
 
@@ -195,7 +195,7 @@ module.exports.Profile = class {
    * @returns {Array<String>}
    */
   FromUserInventory (userId, itemType) {
-    if (this.ProfileDisabledForGuild() || !["roles", "tags"].some((elem) => itemType === elem) || !this.UserInventory(userId)) {
+    if (this.ProfileDisabledForGuild() || !['roles', 'tags'].some((elem) => itemType === elem) || !this.UserInventory(userId)) {
       return null
     }
 
@@ -209,7 +209,7 @@ module.exports.Profile = class {
    * @returns {Object}
    */
   FindGuildItem (itemType, itemName) {
-    if (this.ProfileDisabledForGuild() || !["roles", "tags"].some((elem) => itemType === elem) || !this.FindGuildSelling(itemType)) {
+    if (this.ProfileDisabledForGuild() || !['roles', 'tags'].some((elem) => itemType === elem) || !this.FindGuildSelling(itemType)) {
       return null
     }
 
@@ -224,24 +224,24 @@ module.exports.Profile = class {
 
   get DefaultRoleProperties () {
     return {
-      coin: "",
+      coin: '',
       value: 0,
-      roleId: ""
+      roleId: ''
     }
   }
 
   get DefaultTagProperties () {
     return {
-      coin: "",
+      coin: '',
       value: 0,
-      description: ""
+      description: ''
     }
   }
 
   get DefaultCoinProperties () {
     return {
-      code: "",
-      emoji: "",
+      code: '',
+      emoji: '',
       value: 0
     }
   }
@@ -265,22 +265,22 @@ module.exports.Profile = class {
 
   get DefaultProfileProperties () {
     return {
-      clan: "",
-      background: "",
-      description: ""
+      clan: '',
+      background: '',
+      description: ''
     }
   }
 
   get DefaultGuildProperties () {
     return {
-      language: "",
+      language: '',
       profile: {
         enabled: false,
         currency: {
           coins: {
             zerinhoMoney: {
-              code: "ZRM",
-              emoji: "💰",
+              code: 'ZRM',
+              emoji: '💰',
               value: 369
             }
           },
@@ -321,8 +321,8 @@ module.exports.Profile = class {
           }
         },
         defaultConfig: {
-          background: "https://cdn.glitch.com/07a1e29d-d555-46aa-9758-a9cb10390ccd%2F1_pBZ1aL7UcriEesvddpPOFg.png",
-          description: "Hi, I'm a awesome user!"
+          background: 'https://cdn.glitch.com/07a1e29d-d555-46aa-9758-a9cb10390ccd%2F1_pBZ1aL7UcriEesvddpPOFg.png',
+          description: 'Hi, I\'m a awesome user!'
         }
       }
     }

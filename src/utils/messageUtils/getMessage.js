@@ -24,7 +24,9 @@ module.exports.getMessage = async (bot, guildId, channelId, messageId) => {
   try {
     const Message = await Channel.messages.fetch(messageId)
     return Message || null
-  } catch { }
+  } catch (e) {
+    Log.warn(`Could not get message id ${messageId}, error: ${e.toString()}`)
+  }
 
   return null
 }

@@ -1,10 +1,10 @@
-const { CacheUtils, DateUtils } = require("../utils/index.js")
+const { CacheUtils, DateUtils } = require('../utils/index.js')
 
 exports.condition = ({ message, fastSend }) => {
   const Profile = new CacheUtils.Profile(message.guild)
 
   if (Profile.ProfileDisabledForGuild()) {
-    fastSend("Currency_errorProfileNotEnabled")
+    fastSend('Currency_errorProfileNotEnabled')
     return false
   }
 
@@ -20,12 +20,12 @@ exports.run = ({ message, fastSend, i18n }) => {
   let createdToday = false
 
   if (CoinsName.length <= 0) {
-    fastSend("Currency_errorNoGuildCoin")
+    fastSend('Currency_errorNoGuildCoin')
     return
   }
 
   if (!Profile.UserBank(message.author.id)) {
-    Log.info("Creating bank for user ", message.author.id)
+    Log.info(`Creating bank for user ${message.author.id}`)
     Profile.GuildBank[message.author.id] = Profile.DefaultUserBankProperties
     createdToday = true
     requiresUpdate = true
@@ -35,7 +35,7 @@ exports.run = ({ message, fastSend, i18n }) => {
   const DateClass = new DateUtils.Date(UserBank.lastDaily)
 
   if (DateClass.isOldDay || createdToday) {
-    Log.info("The user ", message.author.id, " was created today or passed a day.")
+    Log.info(`The user ${message.author.id} was created today or passed a day.`)
     for (let i = 0; i < CoinsName.length; i++) {
       if (!UserBank.wallet[CoinsName[i]]) {
         UserBank.wallet[CoinsName[i]] = Profile.DefaultMoneyProperties
@@ -44,16 +44,16 @@ exports.run = ({ message, fastSend, i18n }) => {
       CollectedCoins.push(CoinsName[i])
       requiresUpdate = true
     }
-    Log.info("Defined user ", message.author.id, " lastDaily to ", new Date().getTime().toString())
+    Log.info(`Defined user ${message.author.id} lastDaily to ${new Date().getTime().toString()}`)
     UserBank.lastDaily = new Date().getTime()
   }
 
   if (requiresUpdate) {
-    Log.info("Updated guildConfig.")
-    CacheUtils.write("guildConfig", Profile.guildConfig)
+    Log.info('Updated guildConfig.')
+    CacheUtils.write('guildConfig', Profile.guildConfig)
   }
 
-  let collectedCoinsStr = ""
+  let collectedCoinsStr = ''
   for (let i = 0; i < CollectedCoins.length; i++) {
     const Coin = Coins[CollectedCoins[i]]
     collectedCoinsStr += `${isNaN(Coin.emoji) ? Coin.emoji : `<:${message.guild.emojis.cache.get(Coin.emoji).name}:${message.guild.emojis.cache.get(Coin.emoji).id}>`}${Coin.code} +**${Coin.value}**\n`
@@ -63,33 +63,33 @@ exports.run = ({ message, fastSend, i18n }) => {
     const DateClass = new DateUtils.Date(UserBank.lastDaily)
     const TimeSinceLastDaily = DateClass.fromNow
     // const Time = TimeSinceLastDaily.includes("seconds") ? i18n.__("Daily_seconds") : TimeSinceLastDaily.includes("minutes") ? i18n.__("Daily_minutes") : TimeSinceLastDaily.includes("hours") ? i18n.__("Daily_hours") : i18n.__("Daily_userForgotTheBotExists")
-    const Amount = TimeSinceLastDaily.replace(/[^0-9]/g, "")
+    const Amount = TimeSinceLastDaily.replace(/[^0-9]/g, '')
     const Time = () => {
-      const InPlural = Amount === 1 ? "" : "s"
+      const InPlural = Amount === 1 ? '' : 's'
 
-      const BasicTimes = ["day", "month", "year"]
+      const BasicTimes = ['day', 'month', 'year']
 
       if (BasicTimes.some((elem) => TimeSinceLastDaily.includes(elem))) {
-        const Time = (TimeSinceLastDaily.replace(/([0-9])/g, "")).replace(/\s+/g, "").replace("-", "")
+        const Time = (TimeSinceLastDaily.replace(/([0-9])/g, '')).replace(/\s+/g, '').replace('-', '')
         // Yes, I'm bad at regex, please help me.
         return i18n.__(`Daily_${Time}${InPlural}`)
       } else {
-        const SplitTime = TimeSinceLastDaily.split(" ")
+        const SplitTime = TimeSinceLastDaily.split(' ')
         const Hour = SplitTime[0]
         const Minute = SplitTime[2]
         const Second = SplitTime[4]
-        const HourStr = Hour === 1 ? i18n.__("Daily_hour") : i18n.__("Daily_hours")
-        const MinuteStr = Minute === 1 ? i18n.__("Daily_minute") : i18n.__("Daily_minutes")
-        const SecondStr = Second === 1 ? i18n.__("Daily_second") : i18n.__("Daily_seconds")
+        const HourStr = Hour === 1 ? i18n.__('Daily_hour') : i18n.__('Daily_hours')
+        const MinuteStr = Minute === 1 ? i18n.__('Daily_minute') : i18n.__('Daily_minutes')
+        const SecondStr = Second === 1 ? i18n.__('Daily_second') : i18n.__('Daily_seconds')
 
-        return i18n.__("Daily_errorNoCoinToCollectSameDay", { time: `${Hour} ${HourStr} ${Minute} ${MinuteStr} ${Second} ${SecondStr}` })
+        return i18n.__('Daily_errorNoCoinToCollectSameDay', { time: `${Hour} ${HourStr} ${Minute} ${MinuteStr} ${Second} ${SecondStr}` })
       }
     }
-    Log.info("User ", message.author.id, " has no coin to collect, timestamp is ", new Date().getTime().toString(), " his last daily was ", TimeSinceLastDaily)
-    if (Time().includes(i18n.__("Daily_second"))) {
+    Log.info(`User ${message.author.id} has no coin to collect, timestamp is ${new Date().getTime().toString()} his last daily was ${TimeSinceLastDaily}`)
+    if (Time().includes(i18n.__('Daily_second'))) {
       fastSend(Time(), true)
     } else {
-      fastSend("Daily_errorNoCoinToCollect", false, { amount: Amount, time: Time() })
+      fastSend('Daily_errorNoCoinToCollect', false, { amount: Amount, time: Time() })
     }
     return
   }

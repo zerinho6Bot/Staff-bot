@@ -1,5 +1,5 @@
-const Commands = require("./index.js")
-const { MessageUtils } = require("../utils/index.js")
+const Commands = require('./index.js')
+const { MessageUtils } = require('../utils/index.js')
 
 exports.run = ({ bot, message, keys, fastSend, fastEmbed, args, i18n }) => {
   if (args.length < 2) {
@@ -7,25 +7,28 @@ exports.run = ({ bot, message, keys, fastSend, fastEmbed, args, i18n }) => {
     const AdvancedKeys = Object.keys(Advanced)
     for (let i = 0; i < AdvancedKeys.length; i++) {
       const Value = Advanced[AdvancedKeys[i]]
-      fastEmbed.addField(`**${i18n.__(`Help_${AdvancedKeys[i]}`)}** (${Value.length})`, "``" + Value.join("``, ``") + "``")
+      fastEmbed.addField(`**${i18n.__(`Help_${AdvancedKeys[i]}`)}** (${Value.length})`, `\`\`${Value.join('``, ``')}\`\``)
     }
     // fastEmbed.setTitle(i18n.__("Help_Commands"))
     // fastEmbed.setDescription("``" + Object.keys(Commands).join("``, ``") + "``")
     // TODO: Pagination for more than embed.fields limit categories
+    // Update 30/03/2020 (DD/MM/YYYY) - Pagination has been done on a hard edited
+    // version of this bot, it's coming soon.
+
     fastSend(fastEmbed, true)
     return
   }
 
   const SafeCommandName = args[1].toLowerCase()
   const CommandKeys = Object.keys(Commands)
-  CommandKeys.splice(CommandKeys.indexOf("advanced"), 1)
+  CommandKeys.splice(CommandKeys.indexOf('advanced'), 1)
   if (!CommandKeys.includes(SafeCommandName)) {
-    fastSend("Help_errorCommandDontExist")
+    fastSend('Help_errorCommandDontExist')
     return
   }
 
   if (Commands[SafeCommandName].helpEmbed === undefined) {
-    fastSend("Help_errorNoHelpMade")
+    fastSend('Help_errorNoHelpMade')
     return
   }
 
@@ -36,7 +39,7 @@ exports.helpEmbed = ({ message, helpEmbed, i18n }) => {
   const Options = {
     argumentsLength: 1,
     argumentsNeeded: false,
-    argumentsFormat: ["help"] // Commands can't get translated
+    argumentsFormat: ['help'] // Commands can't get translated
   }
 
   return helpEmbed(message, i18n, Options)

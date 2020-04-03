@@ -1,8 +1,13 @@
-exports.run = ({ message, fastEmbed, fastSend }) => {
+exports.condition = ({ message, fastSend }) => {
   if (message.guild.iconURL() === null) {
-    fastSend("No icon")
-    return
+    fastSend('No icon')
+    return false
   }
+
+  return true
+}
+
+exports.run = ({ message, fastEmbed, fastSend }) => {
   fastEmbed.setImage(message.guild.iconURL({ size: 2048 }))
   fastSend(fastEmbed, true)
 }

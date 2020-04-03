@@ -1,4 +1,4 @@
-const I18nModule = require("i18n-nodejs")
+const I18nModule = require('i18n-nodejs')
 
 /**
  * Starts the i18n module with the given language.
@@ -7,7 +7,7 @@ const I18nModule = require("i18n-nodejs")
  * @returns {Object}
  */
 exports.init = (language) => {
-  const Path = require("path")
-  const I18n = new I18nModule(language, Path.join(__dirname, "../../languages/languages.json"))
+  const Path = require('path')
+  const I18n = new I18nModule(language, Path.join(__dirname, '../../languages/languages.json'))
   return I18n
 }

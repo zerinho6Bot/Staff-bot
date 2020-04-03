@@ -5,27 +5,27 @@
  * @returns {Boolean} - If the action had success.
  */
 module.exports.write = (file, content) => {
-  const CacheUtils = require("./index.js")
+  const CacheUtils = require('./index.js')
   const Files = CacheUtils.getFiles()
-  const Path = require("path")
+  const Path = require('path')
 
   if (!Files.includes(file)) {
-    Log.info(`${file} does not exist on cache directory, files that exist: ${Files.join(", ")}`)
+    Log.info(`${file} does not exist on cache directory, files that exist: ${Files.join(', ')}`)
     return false
   }
 
-  const Fs = require("fs")
+  const Fs = require('fs')
   Fs.writeFile(Path.join(__dirname, `../../cache/${file}.json`), JSON.stringify(content, null, 2), (e) => {
     Log.info(`Trying to get file ${file}`)
     if (e) {
-      Log.warn("Couldn't get file, error: " + e.toString())
+      Log.warn(`Couldn't get file, error: ${e.toString()}`)
     }
 
     try {
-      Log.info("Trying to delete file cache.")
+      Log.info('Trying to delete file cache.')
       delete require.cache[require.resolve(Path.join(__dirname, `../../cache/${file}.json`))]
     } catch (e) {
-      Log.warn("Could clear cache, error: " + e.toString())
+      Log.warn(`Could clear cache, error: ${e.toString()}`)
     }
   })
   return true

@@ -1,16 +1,14 @@
 /* globals Log */
-const Discord = require("discord.js")
-const Env = require("dotenv")
-Env.config()
+const Discord = require('discord.js')
+require('dotenv').config()
 
-const Path = require("path")
+const Path = require('path')
 const Bot = new Discord.Client()
 const Keys = process.env
-const { Message, Ready, ErrorHandler } = require("./events")
-// const Log = require("simple-node-logger").createSimpleLogger({ logFilePath: Path.join(__dirname, "./cache/log.txt") })
-global.Log = require("simple-node-logger").createSimpleLogger({ logFilePath: Path.join(__dirname, "./cache/log.txt") }) // Have fun.
+const { Message, Ready, ErrorHandler } = require('./events')
+global.Log = require('simple-node-logger').createSimpleLogger({ logFilePath: Path.join(__dirname, './cache/log.txt') }) // Have fun.
 
-Bot.on("message", (message) => {
+Bot.on('message', (message) => {
   try {
     if (!Message.condition(message, Keys, Bot)) {
       return
@@ -24,9 +22,9 @@ Bot.on("message", (message) => {
   }
 })
 
-Bot.on("ready", () => {
-  const { guildConfig } = require("./cache/index.js")
-  const { isOnGuild, write } = require("./utils/index.js").CacheUtils
+Bot.on('ready', () => {
+  const { guildConfig } = require('./cache/index.js')
+  const { isOnGuild, write } = require('./utils/index.js').CacheUtils
   const Guilds = Object.keys(guildConfig)
   let needsDataUpdate = false
   for (let i = 0; i < Guilds.length; i++) {
@@ -39,13 +37,13 @@ Bot.on("ready", () => {
   }
 
   if (needsDataUpdate) {
-    write("guildConfig", guildConfig)
+    write('guildConfig', guildConfig)
   }
 
   Ready.run(Bot, Keys)
 })
 
-Bot.on("error", (err) => {
+Bot.on('error', (err) => {
   ErrorHandler.run(err)
 })
 

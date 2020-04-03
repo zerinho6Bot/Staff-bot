@@ -1,4 +1,4 @@
-const Cache = require("../../cache/index.js")
+const Cache = require('../../cache/index.js')
 
 /**
  * Retuns the files listed on cache/index.js
@@ -7,6 +7,6 @@ const Cache = require("../../cache/index.js")
  */
 module.exports.getFiles = () => {
   const Files = Object.keys(Cache)
-  Log.info("Getting files: " + Files.join(", "))
+  Log.info(`Getting files: ${Files.join(', ')}`)
   return Files
 }

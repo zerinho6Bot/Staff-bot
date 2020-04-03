@@ -5,7 +5,7 @@
  * @returns {Array<String>} - Returns a array made of the message splited, it'll be called args by many functions.
  */
 const Args = (message) => {
-  return message.content.split(" ")
+  return message.content.split(' ')
 }
 
 /**
@@ -19,27 +19,29 @@ const CommandName = (args, keys) => {
   return args[0].toLowerCase().slice(keys.PREFIX.length)
 }
 
-const { guildConfig } = require("../cache/index.js")
-const { LanguageUtils, MessageUtils } = require("../utils/index.js")
-const Commands = require("../commands/index.js")
+const { guildConfig } = require('../cache/index.js')
+const { LanguageUtils, MessageUtils } = require('../utils/index.js')
+const Commands = require('../commands/index.js')
 
 exports.condition = (message, keys, bot) => {
-  if (message.channel.type === "dm" || !message.content.toLowerCase().startsWith(keys.PREFIX) || message.author.bot) {
+  if (message.channel.type !== 'text' || !message.content.toLowerCase().startsWith(keys.PREFIX) || message.author.bot) {
     return false
   }
 
-  const GuildDefinedLanguage = guildConfig[message.guild.id] && guildConfig[message.guild.id].language ? 
-  guildConfig[message.guild.id].language : ""
-  const Send = MessageUtils.ConfigSender(message.channel, LanguageUtils.init(GuildDefinedLanguage === "" ? LanguageUtils.fallbackLanguage : GuildDefinedLanguage))
-  if (!message.channel.permissionsFor(bot.user.id).has("SEND_MESSAGES")) {
+  const GuildDefinedLanguage = guildConfig[message.guild.id] && guildConfig[message.guild.id].language
+    ? guildConfig[message.guild.id].language : ''
+  const Send = MessageUtils.ConfigSender(message.channel, LanguageUtils.init(GuildDefinedLanguage === '' ? LanguageUtils.fallbackLanguage : GuildDefinedLanguage))
+  if (!message.channel.permissionsFor(bot.user.id).has('SEND_MESSAGES')) {
     try {
-      message.author.send("Message_errorImpossibleReply")
-    } catch {}
+      message.author.send('Message_errorImpossibleReply')
+    } catch (e) {
+      Log.info(`Could not send message to author ${message.author.id}, error: ${e.toString()}`)
+    }
     return false
   }
 
-  if (!message.channel.permissionsFor(bot.user.id).has("EMBED_LINKS")) {
-    Send("Message_errorMissingEmbedLinks")
+  if (!message.channel.permissionsFor(bot.user.id).has('EMBED_LINKS')) {
+    Send('Message_errorMissingEmbedLinks')
     return false
   }
 
@@ -48,7 +50,7 @@ exports.condition = (message, keys, bot) => {
 
   if (UserCooldown > 0) {
     if (UserCooldown === 4) {
-      Send("Message_errorCooldownWarning", false, { amount: 3 })
+      Send('Message_errorCooldownWarning', false, { amount: 3 })
     }
     return
   }
@@ -58,8 +60,8 @@ exports.condition = (message, keys, bot) => {
   }
 
   if (!Object.keys(Commands).includes(SafeCommandName)) {
-    Log.info(message.author.id, " tried to execute a command that doesn't exist, command:", SafeCommandName)
-    Send("Help_errorCommandDontExist")
+    Log.info(`${message.author.tag}(${message.author.id}) tried to execute a command that doesn't exist, command: ${SafeCommandName}`)
+    Send('Help_errorCommandDontExist')
     return
   }
 
@@ -70,8 +72,8 @@ exports.run = async (message, keys, bot) => {
   const SafeArgs = Args(message)
   const SafeCommandName = CommandName(SafeArgs, keys)
   const Command = Commands[SafeCommandName]
-  const GuildDefinedLanguage = guildConfig[message.guild.id] && guildConfig[message.guild.id].language ? guildConfig[message.guild.id].language : ""
-  const I18n = await LanguageUtils.init(GuildDefinedLanguage === "" ? LanguageUtils.fallbackLanguage : GuildDefinedLanguage)
+  const GuildDefinedLanguage = guildConfig[message.guild.id] && guildConfig[message.guild.id].language ? guildConfig[message.guild.id].language : ''
+  const I18n = await LanguageUtils.init(GuildDefinedLanguage === '' ? LanguageUtils.fallbackLanguage : GuildDefinedLanguage)
   const Send = MessageUtils.ConfigSender(message.channel, I18n)
   const Arguments = { message, keys, bot, args: SafeArgs, fastEmbed: MessageUtils.FastEmbed(message), fastSend: Send, i18n: I18n, Log }
 
@@ -79,10 +81,10 @@ exports.run = async (message, keys, bot) => {
     const Condition = await Command.condition(Arguments)
 
     if (!Condition) {
-      Log.info("Failed condition for command: ", SafeCommandName)
+      Log.info(`Failed condition for command: ${SafeCommandName}`)
       return
     }
   }
-  Log.info("User: ", message.author.id, " executed command: ", SafeCommandName)
+  Log.info(`User: ${message.author.id} executed command: ${SafeCommandName}`)
   Commands[SafeCommandName].run(Arguments)
 }

@@ -1,11 +1,11 @@
 exports.condition = ({ message, args, fastSend, keys }) => {
   if (message.author.id !== keys.OWNER) {
-    fastSend("Eval_errorOnlyOwner")
+    fastSend('Eval_errorOnlyOwner')
     return false
   }
   // st.eval code
   if (args.length < 2) {
-    fastSend("Eval_errorMissingCode")
+    fastSend('Eval_errorMissingCode')
     return false
   }
 
@@ -13,7 +13,7 @@ exports.condition = ({ message, args, fastSend, keys }) => {
 }
 
 exports.run = async ({ message, args, fastEmbed, fastSend, i18n, keys }) => {
-  const FullArgs = args.splice(1, args.length).join(" ")
+  const FullArgs = args.splice(1, args.length).join(' ')
   const Result = async () => {
     try {
       // eslint-disable-next-line no-eval
@@ -26,8 +26,8 @@ exports.run = async ({ message, args, fastEmbed, fastSend, i18n, keys }) => {
 
   const FinalResult = await Result()
 
-  fastEmbed.addField(i18n.__("Eval_code"), `\`\`\`Javascript\n${FullArgs}\n\`\`\``)
-  fastEmbed.addField(i18n.__("Eval_result"), FinalResult)
+  fastEmbed.addField(i18n.__('Eval_code'), `\`\`\`Javascript\n${FullArgs}\n\`\`\``)
+  fastEmbed.addField(i18n.__('Eval_result'), FinalResult)
 
   fastSend(fastEmbed)
 }
@@ -36,7 +36,7 @@ exports.helpEmbed = ({ message, helpEmbed, i18n }) => {
   const Options = {
     argumentsLength: 1,
     argumentsNeeded: true,
-    argumentsFormat: [i18n.__("eval_firstArgumentExample")]
+    argumentsFormat: [i18n.__('eval_firstArgumentExample')]
   }
 
   return helpEmbed(message, i18n, Options)

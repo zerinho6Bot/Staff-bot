@@ -7,7 +7,7 @@ exports.helpEmbed = ({ message, helpEmbed, i18n }) => {
   const Options = {
     argumentsLength: 1,
     argumentsNeeded: false,
-    argumentsFormat: [i18n.__("Example_Mention")]
+    argumentsFormat: [i18n.__('Example_Mention')]
   }
 
   return helpEmbed(message, i18n, Options)

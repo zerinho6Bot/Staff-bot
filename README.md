@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-1. [Node.js](https://nodejs.org/en/) atleast 12.x.x version.
+1. [Node.js](https://nodejs.org/en/) atleast 12.x.x version. (10.x.x if you don't care about embeds not working)
 2. [Git](https://git-scm.com/)
 3. [A Discord Account](https://discordapp.com)
 4. [A Discord Application](https://discordapp.com/developers/applications/)
@@ -44,8 +44,6 @@ If you're unfamiliar, prefix means what the message should start with so the bot
 ### Coding style
 
 Staff-bot uses [Standard](https://github.com/standard/standard) so you should too, click on Stardard to check it's repository and how to install it, I recommend you to do this before trying to work on the code since the eslint'll pretty much not work without you installing it in the global.
-
-The only rule that Staff Bot changes from standard is the use of single quotes that's already said to the interpreter on the .eslintrc.json
 
 If unsure of your coding style you can run ``standard --fix`` outside the src folder so it'll fix everything it can for you.
 

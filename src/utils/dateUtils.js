@@ -77,7 +77,7 @@ exports.Date = class {
    * @returns {String} - Format: "Amount Time", Amount being a number and Time being like "second", "minute"..etc, example: "4 second"
    */
   get fromNow () {
-    let time = "second"
+    let time = 'second'
 
     if (!this.isOldDay) {
       const MissingHours = 24 - (this.js.hour + 1)
@@ -88,15 +88,15 @@ exports.Date = class {
     }
 
     if (this.isOldDay) {
-      time = "day"
+      time = 'day'
     }
 
     if (this.isOldMonth) {
-      time = "month"
+      time = 'month'
     }
 
     if (this.isOldYear) {
-      time = "year"
+      time = 'year'
     }
 
     return `${this.js[time] - this.givenDate[time]} ${time}`

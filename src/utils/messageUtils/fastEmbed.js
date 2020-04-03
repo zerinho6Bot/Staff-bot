@@ -1,4 +1,4 @@
-const Discord = require("discord.js")
+const Discord = require('discord.js')
 
 /**
  * Returns a pre-built embed with Author, Color and Timestamp already defined.
