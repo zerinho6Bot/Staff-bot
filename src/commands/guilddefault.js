@@ -3,6 +3,11 @@ const { CacheUtils } = require('../utils/index.js')
 exports.condition = ({ message, args, fastSend, i18n }) => {
   const Profile = new CacheUtils.Profile(message.guild)
 
+  if (!message.guild.member(message.author.id).hasPermission('MANAGE_GUILD')) {
+    fastSend('Move_errorMissingPermission', false, { who: i18n.__('Global_You'), permission: 'MANAGE_GUILD' })
+    return false
+  }
+
   if (Profile.ProfileDisabledForGuild()) {
     fastSend('Currency_errorProfileNotEnabled')
     return false
